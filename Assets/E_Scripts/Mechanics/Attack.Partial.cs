@@ -11,7 +11,7 @@ public partial class Attack : MonoBehaviour
     {
         if (damageOnHit)
         {
-            if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), Vector3.zero, Quaternion.identity, .1f, 1 << 9))
+            if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), Vector3.left, Quaternion.identity, .1f, 1 << 9))
             {
                 print("Damage");
             }
@@ -30,14 +30,14 @@ public partial class Attack : MonoBehaviour
         print("Slash!!");
     }
 
-    public void Blow()
+    public void Blow(float radious)
     {
-
+        print("Blow");
     }
 
-    public void Trhow_Spikes()
+    public void Trhow_Thorns()
     {
-
+        print("Thorns!!");
     }
 
     private void OnTriggerEnter(Collider other)

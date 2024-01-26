@@ -18,10 +18,9 @@ public class Boss : Character
     [SerializeField] float midDis = 6;
     [SerializeField] float explotionRadious = 2;
     [SerializeField] float blowCD = 5;
-    [SerializeField] float pushSpeed = 6;
     [SerializeField] float pushCD = 4;
-    [SerializeField] float spikesTime = 1f;
-    [SerializeField] float spikesCD = 8;
+    [SerializeField] float thornsTime = 1f;
+    [SerializeField] float thornsCD = 8;
 
     [Space(10), Header("Status")]
     [SerializeField] int fase = 1;
@@ -32,11 +31,12 @@ public class Boss : Character
     [SerializeField, Range(0, 4)] float tgrSlash = 0;
     [SerializeField, Range(0, 12)] float tgrPush = 0;
     [SerializeField, Range(0, 16)] float tgrBlow = 0;
-    [SerializeField, Range(0, 20)] float tgrSpike = 0;
+    [SerializeField, Range(0, 20)] float tgrthorn = 0;
     bool canSlash;
     bool canBlow;
     bool canPush;
     bool canAttack = true;
+    bool drawExplotion = false;
 
     public event Action OnDie;
 
@@ -49,7 +49,7 @@ public class Boss : Character
     [SerializeField] ConditialAction caSlash;
     [SerializeField] ConditialAction caPush;
     [SerializeField] ConditialAction caBlow;
-    [SerializeField] ConditialAction caSpikes;
+    [SerializeField] ConditialAction caThorns;
 
     enum Hability
     {
@@ -168,8 +168,8 @@ public class Boss : Character
 
         caSlash = new ConditialAction(slashRate, 4, myAttack.Slash);
         caPush = new ConditialAction(slashRate, 12, () => { });
-        caBlow = new ConditialAction(slashRate, 16, myAttack.Blow);
-        caSpikes = new ConditialAction(slashRate, 20, myAttack.Trhow_Spikes);
+        caBlow = new ConditialAction(slashRate, 16, () => { });
+        caThorns = new ConditialAction(slashRate, 20, myAttack.Trhow_Thorns);
 
         Invoke("FindPlayer", 2);
     }
@@ -184,49 +184,60 @@ public class Boss : Character
         Move();
     }
 
+    private void OnDrawGizmos()
+    {
+        if (drawExplotion)
+            Gizmos.DrawWireSphere(transform.position, explotionRadious);
+    }
+
     private void SetTimers()
     {
-        if (playerPosition != PlayerPos.UnReachable)
+        if (curDis == PlayerDis.Far)
         {
-            if (curDis == PlayerDis.Far)
+            if (playerPosition != PlayerPos.UnReachable)
             {
                 caPush.CurTime += Time.deltaTime;
-                caSpikes.CurTime += Time.deltaTime;
+                caThorns.CurTime += Time.deltaTime; 
             }
-            else if (curDis == PlayerDis.Mid)
+            else if (playerPosition == PlayerPos.UnReachable)
             {
-                if (playerPosition != PlayerPos.UnReachable)
-                {
-                    caPush.CurTime += Time.deltaTime;
-                }
-                else
-                    caBlow.CurTime += Time.deltaTime * 2;
+                caBlow.CurTime += Time.deltaTime;
             }
-            else if (curDis == PlayerDis.Close && playerPosition != PlayerPos.UnReachable)
+        }
+        else if (curDis == PlayerDis.Mid)
+        {
+            if (playerPosition != PlayerPos.UnReachable)
             {
-                if (playerPosition == PlayerPos.Front)
-                {
-                    caSpikes.CurTime += Time.deltaTime;
-                    caBlow.CurTime += Time.deltaTime;
-                    caPush.CurTime += Time.deltaTime;
-                }
-                else if (playerPosition == PlayerPos.Back)
-                {
-                    caBlow.CurTime += Time.deltaTime * 2;
-                    caSlash.CurTime += Time.deltaTime * 2;
-                }
-                else if (playerPosition == PlayerPos.Up)
-                {
-                    caBlow.CurTime += Time.deltaTime * 2;
-                    caBlow.CurTime += Time.deltaTime * 2;
-                }
-            } 
+                caPush.CurTime += Time.deltaTime;
+                caSlash.CurTime += Time.deltaTime;
+            }
+            else
+                caBlow.CurTime += Time.deltaTime * 2;
+        }
+        else if (curDis == PlayerDis.Close && playerPosition != PlayerPos.UnReachable)
+        {
+            if (playerPosition == PlayerPos.Front)
+            {
+                caThorns.CurTime += Time.deltaTime;
+                caSlash.CurTime += Time.deltaTime;
+                caPush.CurTime += Time.deltaTime;
+            }
+            else if (playerPosition == PlayerPos.Back)
+            {
+                caBlow.CurTime += Time.deltaTime * 2;
+                caSlash.CurTime += Time.deltaTime * 2;
+            }
+            else if (playerPosition == PlayerPos.Up)
+            {
+                caBlow.CurTime += Time.deltaTime * 2;
+                caThorns.CurTime += Time.deltaTime * 2;
+            }
         }
 
         tgrBlow = caBlow.CurTime;
         tgrSlash = caSlash.CurTime;
         tgrPush = caPush.CurTime;
-        tgrSpike = caSpikes.CurTime;
+        tgrthorn = caThorns.CurTime;
     }
     #endregion
 
@@ -234,13 +245,17 @@ public class Boss : Character
     {
         if (!canAttack) return;
 
-        if (caSpikes.CanMove)
+        if (caThorns.CanMove)
         {
-            EnableSpears();
+            EnableThorns();
         }
         else if (caBlow.CanMove)
         {
-            print("Blow");
+            canAttack = false;
+            caBlow.Restart();
+
+            myMovement.MoveTo(myPlayer.transform.position, () => Invoke("Blow", 1));
+            
         }
         else if (caPush.CanMove)
         {
@@ -249,23 +264,50 @@ public class Boss : Character
         else if (caSlash.CanMove)
         {
             canAttack = false;
-            myAttack.Slash();
-            Invoke("EnableAttack", 1);
+
+            if (curDis == PlayerDis.Mid || curDis == PlayerDis.Far)
+            {
+                myMovement.MoveTo(myPlayer.transform.position, Slash);
+            }
+            else
+                Slash();
         }
     }
 
-    private void EnableSpears()
+    private void Blow()
+    {
+        myAttack.Blow(explotionRadious);
+
+        InvokeRepeating("DrawExplotionGizmo", 1.5f, .05f);
+        Invoke("EnableAttack", 2);
+        Invoke("StopExplotion", 2);
+    }
+
+    private void DrawExplotionGizmo() => drawExplotion = true;
+
+    private void StopExplotion() => drawExplotion = false;
+
+    private void Slash()
+    {
+        myAttack.Slash();
+        caSlash.Restart();
+
+        Invoke("EnableAttack", slashRate);
+    }
+
+    private void EnableThorns()
     {
         canAttack = false;
         picos.SetActive(true);
 
-        Invoke("EnableAttack", spikesTime);
+        Invoke("DisableThorns", thornsTime);
     }
 
-    private void SisableSpears()
+    private void DisableThorns()
     {
+        caThorns.Restart();
         picos.SetActive(false);
-        canAttack = true;
+        EnableAttack();
     }
 
     private void EnableAttack() => canAttack = true;
@@ -282,7 +324,7 @@ public class Boss : Character
         myAttack.EnableDagameOnHit();
 
         myMovement.MoveTo(edgePos, () =>
-            myMovement.MoveTo(oppositeEdge, StopPush));
+            myMovement.MoveTo(oppositeEdge, StopPush, 2.6f));
 
         Vector3 GetNearestEdge(out Vector3 opposite)
         {
@@ -329,6 +371,34 @@ public class Boss : Character
             curDis = PlayerDis.Mid;
         else 
             curDis = PlayerDis.Far;
+
+        if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.myDir, Quaternion.identity, 1, 1 << 9))
+        {
+            playerPosition = PlayerPos.Front;
+            print("Front");
+        }
+        else if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), Vector3.up, Quaternion.identity, 1, 1 << 9))
+        {
+            playerPosition = PlayerPos.Up;
+            print("Up");
+        }
+        else if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.myDir * -1, Quaternion.identity, 1, 1 << 9))
+        {
+            playerPosition = PlayerPos.Back;
+            print("Back");
+        }
+        else if (Vector3.Distance(myPlayer.transform.position, transform.position) > closeDis)
+        {
+            if (myPlayer.transform.position.x > transform.position.x)
+            {
+                if (Vector3.Angle(myPlayer.transform.position - transform.position, Vector3.right) > 20)
+                    playerPosition = PlayerPos.UnReachable;
+            }
+            else if (Vector3.Angle(myPlayer.transform.position - transform.position, Vector3.left) > 20)
+                playerPosition = PlayerPos.UnReachable;
+        }
+        else
+            playerPosition = PlayerPos.None;
 
         return true;
     }

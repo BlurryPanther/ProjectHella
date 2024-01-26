@@ -11,6 +11,12 @@ public partial class Movement : MonoBehaviour
     bool canMove = true;
     Action callback = null;
     [SerializeField] float minDistance = 1.5f;
+    float speedBoost = 10;
+
+    void PartialStart()
+    {
+        myDir = Vector3.right;
+    }
 
     public void MyMove(Vector3 direction)
     {
@@ -26,7 +32,7 @@ public partial class Movement : MonoBehaviour
         if (newDir.normalized.magnitude == 1)
             myDir = newDir.normalized;
 
-        curDir = newDir.normalized * mySpeed;
+        curDir = newDir.normalized;
     }
 
     private void FixedUpdate()
@@ -39,28 +45,30 @@ public partial class Movement : MonoBehaviour
 
             if (Vector3.Distance(transform.position, destiny.Value) > minDistance)
             {
-                (rb ??= GetComponent<Rigidbody>()).velocity = new Vector3(curDir.x, rb.velocity.y, 0);
+                (rb ??= GetComponent<Rigidbody>()).velocity = new Vector3(curDir.x * mySpeed * speedBoost, rb.velocity.y, 0);
             }
             else
             {
                 canMove = true;
                 destiny = null;
+                speedBoost = 1;
                 curDir = Vector3.zero;
                 print("Finished");
                 callback?.Invoke();
-                callback = null;
+                //callback = null;
             }
         }
         else
-            (rb ??= GetComponent<Rigidbody>()).velocity = new Vector3(curDir.x, rb.velocity.y, 0);
+            (rb ??= GetComponent<Rigidbody>()).velocity = new Vector3(curDir.x * mySpeed, rb.velocity.y, 0);
     }
 
-    public void MoveTo(Vector3 destiny, Action callBack)
+    public void MoveTo(Vector3 destiny, Action callBack, float speedBoost = 1)
     {
         if (!canMove) return;
 
         this.destiny = destiny;
         this.callback = callBack;
+        this.speedBoost = speedBoost;
 
         var dir = destiny - transform.position;
         MyMove(dir);

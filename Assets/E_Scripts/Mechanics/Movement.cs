@@ -7,7 +7,7 @@ public partial class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PartialStart();
     }
 
     // Update is called once per frame
