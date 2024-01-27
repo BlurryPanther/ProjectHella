@@ -166,7 +166,7 @@ public class Boss : Character
         myMovement = GetComponent<Movement>();
         myAttack = GetComponent<Attack>();
 
-        caSlash = new ConditialAction(slashRate, 4, myAttack.Slash);
+        caSlash = new ConditialAction(slashRate, 4, () => myAttack.Slash(dmg));
         caPush = new ConditialAction(slashRate, 12, () => { });
         caBlow = new ConditialAction(slashRate, 16, () => { });
         caThorns = new ConditialAction(slashRate, 20, myAttack.Trhow_Thorns);
@@ -289,7 +289,7 @@ public class Boss : Character
 
     private void Slash()
     {
-        myAttack.Slash();
+        myAttack.Slash(dmg);
         caSlash.Restart();
 
         Invoke("EnableAttack", slashRate);
@@ -372,7 +372,7 @@ public class Boss : Character
         else 
             curDis = PlayerDis.Far;
 
-        if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.curDirection, Quaternion.identity, 1, 1 << 9))
+        if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.CurDirection, Quaternion.identity, 1, 1 << 9))
         {
             playerPosition = PlayerPos.Front;
             print("Front");
@@ -382,7 +382,7 @@ public class Boss : Character
             playerPosition = PlayerPos.Up;
             print("Up");
         }
-        else if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.curDirection * -1, Quaternion.identity, 1, 1 << 9))
+        else if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.CurDirection * -1, Quaternion.identity, 1, 1 << 9))
         {
             playerPosition = PlayerPos.Back;
             print("Back");
