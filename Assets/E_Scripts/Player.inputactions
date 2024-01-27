@@ -7,9 +7,9 @@
             "actions": [
                 {
                     "name": "Jump",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "e81bceca-118b-4062-baa4-6d98ac0a8693",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -22,13 +22,31 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "8fd21cb6-f487-4a1e-9d2e-89d1138c053b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HeavyAttack",
+                    "type": "Button",
+                    "id": "00ff01f6-5674-44e0-a3fe-ad8ae55b870b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "b0993576-e589-4046-a769-1af9ba18d03e",
-                    "path": "",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic",
@@ -50,7 +68,7 @@
                 {
                     "name": "negative",
                     "id": "5df2f6c2-bf7e-47da-982a-14ed96bbf0ea",
-                    "path": "<Keyboard>/#(D)",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic",
@@ -61,13 +79,46 @@
                 {
                     "name": "positive",
                     "id": "56f40b79-34a7-4e91-9095-a596052999fd",
-                    "path": "<Keyboard>/#(A)",
+                    "path": "<Keyboard>/#(D)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "Attack",
+                    "id": "fb68f963-db79-4873-88a6-4f77e6562e73",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d15b8d9c-ad0b-497f-973f-37d3a1109b84",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "976c29a8-fd0c-4369-8291-b07972ff322a",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic",
+                    "action": "HeavyAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

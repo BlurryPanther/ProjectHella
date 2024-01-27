@@ -1199,7 +1199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &611159044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1377,9 +1377,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b93c9bc9259824da47ea648d62c983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minDistance: 1.8
+  jumpForce: 0
   mySpeed: 4
   myDir: {x: 0, y: 0, z: 0}
-  minDistance: 1.8
+  isGrounded: 0
 --- !u!114 &611159051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2895,6 +2897,9 @@ GameObject:
   - component: {fileID: 1496516947}
   - component: {fileID: 1496516946}
   - component: {fileID: 1496516945}
+  - component: {fileID: 1496516951}
+  - component: {fileID: 1496516953}
+  - component: {fileID: 1496516952}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -2914,6 +2919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fba977ab5550a24f9987d7dfd0bf4a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAction: {fileID: 0}
 --- !u!54 &1496516946
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2939,7 +2945,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &1496516947
 BoxCollider:
@@ -3027,6 +3033,130 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1496516951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496516944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 74d745b2cc030644fbb1d96791739ae3,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1496516945}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e81bceca-118b-4062-baa4-6d98ac0a8693
+    m_ActionName: Pc/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1496516945}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 21f9e70c-c587-455c-9fef-9215c3a28e17
+    m_ActionName: Pc/Move[/Keyboard/d,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1496516945}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8fd21cb6-f487-4a1e-9d2e-89d1138c053b
+    m_ActionName: Pc/Attack[/Keyboard/leftArrow,/Keyboard/b]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1496516945}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: HeavyAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 00ff01f6-5674-44e0-a3fe-ad8ae55b870b
+    m_ActionName: Pc/HeavyAttack[/Keyboard/rightArrow]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Generic
+  m_DefaultActionMap: Pc
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1496516952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496516944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b93c9bc9259824da47ea648d62c983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDistance: 1.5
+  jumpForce: 5.1
+  mySpeed: 4
+  myDir: {x: 1, y: 0, z: 0}
+  isGrounded: 0
+--- !u!114 &1496516953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496516944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe230a47fcf9578488cc764e60b63572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1512554503
 PrefabInstance:
   m_ObjectHideFlags: 0

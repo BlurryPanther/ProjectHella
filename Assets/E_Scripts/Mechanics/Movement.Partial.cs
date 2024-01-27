@@ -3,15 +3,34 @@ using UnityEngine;
 
 public partial class Movement : MonoBehaviour
 {
-    Rigidbody rb;
-    public float mySpeed = 4;
-    public Vector3 myDir = Vector3.right;
-    Vector3 curDir = Vector3.zero;
-    Vector3? destiny = null;
-    bool canMove = true;
-    Action callback = null;
     [SerializeField] float minDistance = 1.5f;
+    [SerializeField] float jumpForce;
+    public float mySpeed = 4;
+    Rigidbody rb;
+
     float speedBoost = 10;
+
+    public Vector3 myDir = Vector3.right;
+    Vector3? destiny = null;
+    Vector3 curDir = Vector3.zero;
+    bool canMove = true;
+    bool inJump = false;
+    [SerializeField] bool isGrounded = false;
+    Action callback = null;
+
+    public bool IsGrounded
+    {
+        get => isGrounded;
+        private set
+        {
+            if (value)
+            {
+                inJump = false;
+            }
+
+            isGrounded = value;
+        }
+    }
 
     void PartialStart()
     {
@@ -37,6 +56,8 @@ public partial class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        DetectGround();
+
         DetectWall();
 
         if (destiny.HasValue)
@@ -64,7 +85,7 @@ public partial class Movement : MonoBehaviour
 
     public void MoveTo(Vector3 destiny, Action callBack, float speedBoost = 1)
     {
-        if (!canMove) return;
+        if (!canMove || inJump) return;
 
         this.destiny = destiny;
         this.callback = callBack;
@@ -77,6 +98,15 @@ public partial class Movement : MonoBehaviour
     public void Stop()
     {
         rb.velocity = Vector3.zero;
+    }
+
+    public void Jump()
+    {
+        if (!isGrounded) return;
+
+        inJump = true;
+
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
 
     private void DetectWall()
@@ -92,5 +122,28 @@ public partial class Movement : MonoBehaviour
                 print("Wall detected");
             }
         }
+    }
+
+    private bool DetectGround()
+    {
+        rb = GetComponent<Rigidbody>();
+        //Ray ray = new Ray(transform.position, Vector3.down);
+        //var hits = Physics.RaycastAll(ray, 3, 1 << 1);
+        Vector3 size = new(.5f, .5f, .5f);
+        var dir = (transform.position + Vector3.down) - transform.position;
+
+        var hits = Physics.BoxCastAll(transform.position, Vector3.one, Vector3.down, Quaternion.identity, .6f, 1 << 0);
+
+        foreach (var hit in hits)
+        {
+            if (Vector3.Angle(hit.point, Vector3.up) < 10)
+            {
+                IsGrounded = true;
+                return true;
+            }
+        }
+
+        IsGrounded= false;
+        return false;
     }
 }

@@ -30,6 +30,11 @@ public partial class Attack : MonoBehaviour
         print("Slash!!");
     }
 
+    public void HeavySlash()
+    {
+        print("Heavy Slash!!");
+    }
+
     public void Blow(float radious)
     {
         print("Blow");
