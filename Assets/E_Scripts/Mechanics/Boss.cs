@@ -372,7 +372,7 @@ public class Boss : Character
         else 
             curDis = PlayerDis.Far;
 
-        if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.myDir, Quaternion.identity, 1, 1 << 9))
+        if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.curDirection, Quaternion.identity, 1, 1 << 9))
         {
             playerPosition = PlayerPos.Front;
             print("Front");
@@ -382,7 +382,7 @@ public class Boss : Character
             playerPosition = PlayerPos.Up;
             print("Up");
         }
-        else if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.myDir * -1, Quaternion.identity, 1, 1 << 9))
+        else if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.curDirection * -1, Quaternion.identity, 1, 1 << 9))
         {
             playerPosition = PlayerPos.Back;
             print("Back");

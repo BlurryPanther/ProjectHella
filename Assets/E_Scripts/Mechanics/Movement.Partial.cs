@@ -4,18 +4,16 @@ using UnityEngine;
 public partial class Movement : MonoBehaviour
 {
     [SerializeField] float minDistance = 1.5f;
-    [SerializeField] float jumpForce;
-    public float mySpeed = 4;
-    Rigidbody rb;
 
+    [Space(10), Header("Status")]
+    [SerializeField] Vector3 curDirection = Vector3.right;
+    [SerializeField] bool isGrounded = false;
+    
     float speedBoost = 10;
-
-    public Vector3 myDir = Vector3.right;
     Vector3? destiny = null;
     Vector3 curDir = Vector3.zero;
     bool canMove = true;
     bool inJump = false;
-    [SerializeField] bool isGrounded = false;
     Action callback = null;
 
     public bool IsGrounded
@@ -31,10 +29,11 @@ public partial class Movement : MonoBehaviour
             isGrounded = value;
         }
     }
+    public Vector3 CurDirection { get => curDirection; }
 
     void PartialStart()
     {
-        myDir = Vector3.right;
+        curDirection = Vector3.right;
     }
 
     public void MyMove(Vector3 direction)
@@ -49,7 +48,7 @@ public partial class Movement : MonoBehaviour
         };
 
         if (newDir.normalized.magnitude == 1)
-            myDir = newDir.normalized;
+            curDirection = newDir.normalized;
 
         curDir = newDir.normalized;
     }
@@ -66,7 +65,7 @@ public partial class Movement : MonoBehaviour
 
             if (Vector3.Distance(transform.position, destiny.Value) > minDistance)
             {
-                (rb ??= GetComponent<Rigidbody>()).velocity = new Vector3(curDir.x * mySpeed * speedBoost, rb.velocity.y, 0);
+                (rb ??= GetComponent<Rigidbody>()).velocity = new Vector3(curDir.x * speed * speedBoost, rb.velocity.y, 0);
             }
             else
             {
@@ -80,7 +79,7 @@ public partial class Movement : MonoBehaviour
             }
         }
         else
-            (rb ??= GetComponent<Rigidbody>()).velocity = new Vector3(curDir.x * mySpeed, rb.velocity.y, 0);
+            (rb ??= GetComponent<Rigidbody>()).velocity = new Vector3(curDir.x * speed, rb.velocity.y, 0);
     }
 
     public void MoveTo(Vector3 destiny, Action callBack, float speedBoost = 1)
@@ -112,12 +111,12 @@ public partial class Movement : MonoBehaviour
     private void DetectWall()
     {
         rb = GetComponent<Rigidbody>();
-        Ray ray = new Ray(transform.position, myDir * 3);
+        Ray ray = new Ray(transform.position, curDirection * 3);
         var hits = Physics.RaycastAll(ray, 3);
 
         foreach (var hit in hits)
         {
-            if (Vector3.Angle(hit.point, myDir) > 175)
+            if (Vector3.Angle(hit.point, curDirection) > 175)
             {
                 print("Wall detected");
             }

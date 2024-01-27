@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 
 public class Player : Character
 {
-    Movement myMovement;
-    Attack myAttack;
-
     private static Player instance;
     public Player Instance { get { return instance; } }
+    bool hpMask;
+    bool fireMask;
+    bool jumpMask;
 
     private void Awake()
     {
@@ -24,8 +20,8 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
-        myMovement = GetComponent<Movement>();
-        myAttack = GetComponent<Attack>();
+        movement = GetComponent<Movement>();
+        attack = GetComponent<Attack>();
 
     }
 
@@ -47,24 +43,24 @@ public class Player : Character
                 z = 0,
             };
 
-            myMovement.MyMove(dir);
+            movement.MyMove(dir);
         }
         else
-            myMovement.MyMove(Vector2.zero);
+            movement.MyMove(Vector2.zero);
     }
 
     public void Jump(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed)
         {
-            myMovement.Jump();
+            movement.Jump();
         }
     }
 
     public void Attack(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.canceled && callbackContext.startTime < 26)
-            myAttack.Slash();
+            attack.Slash(dmg, fireMask ? true : false);
         else
             print(callbackContext.startTime);
     }
@@ -73,8 +69,26 @@ public class Player : Character
     {
         if (callbackContext.performed)
         {
-            myAttack.HeavySlash();
+            attack.HeavySlash(dmg, fireMask ? true : false);
         }
     }
+
+    public void AddMask(MaskType type)
+    {
+        if (type == MaskType.Fire)
+            fireMask = true;
+        else if (type == MaskType.Jump)
+            jumpMask = true;
+        else
+            hpMask = true;
+    }
     #endregion
+}
+
+public enum MaskType
+{
+    None,
+    Jump,
+    HP,
+    Fire
 }

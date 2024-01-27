@@ -4,8 +4,10 @@ using UnityEngine;
 
 public partial class Movement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb;
+    private Rigidbody rb;
+    [Header("Settings"), Space(10)]
     [SerializeField] private float speed;
+    [SerializeField] float jumpForce;
 
     LayerMask layer;
     [SerializeField] private GameObject groundCheck;
@@ -14,11 +16,19 @@ public partial class Movement : MonoBehaviour
 
     [SerializeField] private bool changeDir;
 
+    public float minFirstJumpHeight = 4;
+    public float maxFirstJumpHeight = 7;
+    public float minSecJumpHeight = 2;
+    public float maxSecJumpHeight = 4;
+    public int jumpsCount = 0;
     RaycastHit wc;
+
+    public int Jumps { get; set; } = 1;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         PartialStart();
     }
 

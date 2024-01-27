@@ -25,12 +25,12 @@ public partial class Attack : MonoBehaviour
         print("Push!!");
     }
 
-    public void Slash()
+    public void Slash(float dmg, bool buff = false)
     {
         print("Slash!!");
     }
 
-    public void HeavySlash()
+    public void HeavySlash(float dmg, bool buff = false)
     {
         print("Heavy Slash!!");
     }

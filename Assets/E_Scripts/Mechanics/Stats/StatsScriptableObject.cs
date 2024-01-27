@@ -13,11 +13,11 @@ public class StatsScriptableObject : ScriptableObject
     //Jump
     public int jumps = 1;
 
-    public int minFirstJumpHeight = 4;
-    public int maxFirstJumpHeight = 7;
+    public float minFirstJumpHeight = 4;
+    public float maxFirstJumpHeight = 7;
 
-    public int minSecJumpHeight = 2;
-    public int maxSecJumpHeight = 4;
+    public float minSecJumpHeight = 2;
+    public float maxSecJumpHeight = 4;
 
     
     //Hacer un scriptable object que solo tendrá datos

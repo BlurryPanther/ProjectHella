@@ -10,9 +10,13 @@ public class StatsManager : MonoBehaviour
 
     public StatsScriptableObject statsScriptableObject;
 
+    public bool haveJumpMask = false;
+
     #region Player stats
 
     //Health
+
+    public float GetMinJumpForce(bool haveMask) => MinFirstJumpHeight;
 
     public int Hp
     {
@@ -49,7 +53,7 @@ public class StatsManager : MonoBehaviour
             OnJumps?.Invoke(statsScriptableObject.jumps);
         }
     }
-    public int MinFirstJumpHeight
+    public float MinFirstJumpHeight
     {
         get => statsScriptableObject.minFirstJumpHeight;
         set
@@ -58,7 +62,7 @@ public class StatsManager : MonoBehaviour
             OnMinFirstJumpHeight?.Invoke(statsScriptableObject.minFirstJumpHeight);
         }
     }
-    public int MaxFirstJumpHeight
+    public float MaxFirstJumpHeight
     {
         get => statsScriptableObject.maxFirstJumpHeight;
         set
@@ -67,7 +71,9 @@ public class StatsManager : MonoBehaviour
             OnMaxFirstJumpHeight?.Invoke(statsScriptableObject.maxFirstJumpHeight);
         }
     }
-    public int MinSecJumpHeight
+
+
+    public float MinSecJumpHeight
     {
         get => statsScriptableObject.minSecJumpHeight;
         set
@@ -76,7 +82,7 @@ public class StatsManager : MonoBehaviour
             OnMinSecJumpHeight?.Invoke(statsScriptableObject.minSecJumpHeight);
         }
     }
-    public int MaxSecJumpHeight
+    public float MaxSecJumpHeight
     {
         get => statsScriptableObject.maxSecJumpHeight;
         set
@@ -87,10 +93,10 @@ public class StatsManager : MonoBehaviour
     }
 
     public event Action<int> OnJumps;
-    public event Action<int> OnMinFirstJumpHeight;
-    public event Action<int> OnMaxFirstJumpHeight;
-    public event Action<int> OnMinSecJumpHeight;
-    public event Action<int> OnMaxSecJumpHeight;
+    public event Action<float> OnMinFirstJumpHeight;
+    public event Action<float> OnMaxFirstJumpHeight;
+    public event Action<float> OnMinSecJumpHeight;
+    public event Action<float> OnMaxSecJumpHeight;
     #endregion
 
 }
