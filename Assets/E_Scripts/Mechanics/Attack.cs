@@ -15,4 +15,9 @@ public partial class Attack : MonoBehaviour
     {
         
     }
+
+    public void Shoot()
+    {
+
+    }
 }
