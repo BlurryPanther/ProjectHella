@@ -12,17 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829c2ebb2b858df4581b57519f5985b6, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  minPlayerHp: 5
-  maxPlayerHp: 8
-  playerDmg: 3
-  minJump: 1
-  maxJump: 2
-  minFirstJumpHeight: 4
-  maxFirstJumpHeight: 7
-  minSecJumpHeight: 2
-  maxSecJumpHeight: 4
-  enemy1Hp: 9
-  enemy2Hp: 6
-  enemy3Hp: 27
-  bossHp: 60
-  enemiesDmg: 1
+  hp: 60
+  dmg: 1
+  jumps: 0
+  minFirstJumpHeight: 0
+  maxFirstJumpHeight: 0
+  minSecJumpHeight: 0
+  maxSecJumpHeight: 0
