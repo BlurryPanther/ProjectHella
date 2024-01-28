@@ -22,6 +22,8 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
+        animController = gameObject.GetComponent<Animator>();
+        charSrite = gameObject.GetComponent<SpriteRenderer>();
         movement = GetComponent<Movement>();
         attack = GetComponent<Attack>();
         caAttack = new myAction(.1f);
@@ -40,6 +42,7 @@ public class Player : Character
     #region Inputs
     public void Move(InputAction.CallbackContext callbackContext)
     {
+        animController.SetBool("isRunning", true);
         if(callbackContext.performed)
         {
             var dir = new Vector3()
@@ -48,11 +51,17 @@ public class Player : Character
                 y = 0,
                 z = 0,
             };
-
+            if (callbackContext.ReadValue<float>() < 0)
+                charSrite.flipX = true;
+            if(callbackContext.ReadValue<float>() > 0)
+                charSrite.flipX = false;
             movement.MyMove(dir);
         }
         else
+        {
             movement.MyMove(Vector2.zero);
+            animController.SetBool("isRunning", false);
+        }
     }
 
     public void Jump(InputAction.CallbackContext callbackContext)

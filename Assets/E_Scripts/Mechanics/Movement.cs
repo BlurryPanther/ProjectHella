@@ -44,6 +44,7 @@ public partial class Movement : MonoBehaviour
     void ChangeDir()
     {
         groundCheck.transform.position = new Vector3(transform.position.x - 1, 0, 0);
+        
     }
 
     public void Move(Rigidbody rb)
