@@ -15,11 +15,6 @@ public partial class Movement : MonoBehaviour
 
     [SerializeField] private bool changeDir;
 
-    public float minFirstJumpHeight = 4;
-    public float maxFirstJumpHeight = 7;
-    public float minSecJumpHeight = 2;
-    public float maxSecJumpHeight = 4;
-    public int jumpsCount = 0;
     RaycastHit wc;
 
     public int Jumps { get; set; } = 1;

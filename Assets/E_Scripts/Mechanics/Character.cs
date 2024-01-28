@@ -10,6 +10,8 @@ public class Character : MonoBehaviour
     [SerializeField] float knockBackDis = .5f;
     protected Movement movement;
     protected Attack attack;
+    private Rigidbody rb;
+    BoxCollider col;
 
     protected Animator animController;
     protected SpriteRenderer charSrite;
@@ -22,9 +24,27 @@ public class Character : MonoBehaviour
     //Damage
     public int dmg = 3;
 
+    myAction caImmortality;
+    [SerializeField] protected bool isGrounded = false;
+    protected bool canJump = true;
+    public int jumpsCount = 0;
+
     public event Action OnDead;
 
-    myAction caImmortality;
+    public bool IsGrounded
+    {
+        get => isGrounded;
+        private set
+        {
+            if (value && canJump)
+            {
+                canJump = true;
+                jumpsCount = 0;
+            }
+
+            isGrounded = value;
+        }
+    }
 
     private void Awake()
     {
@@ -38,9 +58,9 @@ public class Character : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        DetectGround();
     }
 
     public void Damage(int value, Vector3? pos = null)
@@ -62,15 +82,16 @@ public class Character : MonoBehaviour
 
     private void KnockBack(Vector3 enemyPos)
     {
-        if (!knockBack) return;
-        {
-            var dir1 = (transform.position - enemyPos).normalized * knockBackDis;
-            var dir = new Vector3(dir1.x, 0, 0);
-            dir += transform.position;
+        if (!knockBack || !canJump) return;
 
-            movement.MoveTo(dir, FinishKnockBack);
-        }
+        var dir1 = (transform.position - enemyPos).normalized * knockBackDis;
+        var dir = new Vector3(dir1.x, 0, 0);
+        dir += transform.position;
+
+        movement.MoveTo(dir, FinishKnockBack);
     }
+
+    private void EnableJump() => canJump = true;
 
     public void FinishKnockBack()
     {
@@ -83,5 +104,26 @@ public class Character : MonoBehaviour
     }
     public void KillCharacter()
     {
+    }
+
+    private bool DetectGround()
+    {
+        rb = GetComponent<Rigidbody>();
+        Vector3 size = new(.5f, .5f, .5f);
+        var dis = (col ??= GetComponent<BoxCollider>()).bounds.extents.y + .5f;
+
+        var hits = Physics.BoxCastAll(transform.position, Vector3.one, Vector3.down, Quaternion.identity, dis, 1 << 0);
+
+        foreach (var hit in hits)
+        {
+            if (Vector3.Angle(hit.normal, Vector3.up) < 10)
+            {
+                IsGrounded = true;
+                return true;
+            }
+        }
+
+        IsGrounded = false;
+        return false;
     }
 }

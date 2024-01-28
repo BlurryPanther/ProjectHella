@@ -7,34 +7,22 @@ public partial class Movement : MonoBehaviour
 
     [Space(10), Header("Status")]
     [SerializeField] Vector3 curDirection = Vector3.right;
-    [SerializeField] bool isGrounded = false;
     
     [SerializeField] float speedBoost = 10;
     Vector3? destiny = null;
     Vector3 curDir = Vector3.zero;
     bool canMove = true;
-    bool canJump = true;
     Action callback = null;
 
     [Space(), Header("Camera"), SerializeField]
     GameObject cameraTarget;
     [SerializeField] float xOffset;
-    BoxCollider col;
 
-    public bool IsGrounded
-    {
-        get => isGrounded;
-        private set
-        {
-            if (value && canJump)
-            {
-                canJump = true;
-                jumpsCount = 0;
-            }
+    public float minFirstJumpHeight = 4;
+    public float maxFirstJumpHeight = 7;
+    public float minSecJumpHeight = 2;
+    public float maxSecJumpHeight = 4;
 
-            isGrounded = value;
-        }
-    }
     public Vector3 CurDirection { get => curDirection; set => curDir = value; }
 
     void PartialStart()
@@ -61,8 +49,6 @@ public partial class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        DetectGround();
-
         DetectWall();
 
         if (destiny.HasValue)
@@ -99,7 +85,7 @@ public partial class Movement : MonoBehaviour
 
     public void MoveTo(Vector3 destiny, Action callBack, float speedBoost = 1)
     {
-        if (!canMove || !canJump) return;
+        if (!canMove) return;
 
         this.destiny = destiny;
         this.callback = callBack;
@@ -116,27 +102,10 @@ public partial class Movement : MonoBehaviour
         curDir = Vector3.zero;
     }
 
-    public void Jump()
-    {
-        if ((isGrounded && jumpsCount > 0) || (!IsGrounded && jumpsCount > 1) || !canJump) return;
-
-        canJump = false;
-        jumpsCount++;
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
-        Invoke("EnableJump", .3f);
-    }
-
     public void Jump(bool basicJump, float holdTime)
     {
-        if ((isGrounded && jumpsCount > 0) || (!IsGrounded && jumpsCount > 1) || !canJump) return;
-
-        var jumpForce = jumpsCount == 0 ? GetJumpVelocity(basicJump, holdTime) : this.jumpForce;
-        canJump = false;
-        jumpsCount++;
+        var jumpForce = GetJumpVelocity(basicJump, holdTime);
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
-        Invoke("EnableJump", .3f);
     }
 
     private float GetJumpVelocity(in bool basicJump, in float holdTime)
@@ -149,8 +118,6 @@ public partial class Movement : MonoBehaviour
 
         return Mathf.Sqrt((minH + extraHeigh) * 2 * Physics.gravity.magnitude);
     }
-
-    private void EnableJump() => canJump = true;
 
     private void DetectWall()
     {
@@ -167,24 +134,5 @@ public partial class Movement : MonoBehaviour
         }
     }
 
-    private bool DetectGround()
-    {
-        rb = GetComponent<Rigidbody>();
-        Vector3 size = new(.5f, .5f, .5f);
-        var dis = (col??= GetComponent<BoxCollider>()).bounds.extents.y + .5f;
-
-        var hits = Physics.BoxCastAll(transform.position, Vector3.one, Vector3.down, Quaternion.identity, dis, 1 << 0);
-
-        foreach (var hit in hits)
-        {
-            if (Vector3.Angle(hit.normal, Vector3.up) < 10)
-            {
-                IsGrounded = true;
-                return true;
-            }
-        }
-
-        IsGrounded= false;
-        return false;
-    }
+    
 }

@@ -101,8 +101,10 @@ public class Boss : Character
         Invoke("FindPlayer", 2);
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         SetTimers();
 
         if (DetectPlayer())
@@ -192,11 +194,12 @@ public class Boss : Character
             }
             else if (caBlow.CanMove)
             {
+                if (!canJump) return;
+
                 canAttack = false;
                 caBlow.Restart();
 
                 movement.MoveTo(myPlayer.transform.position, () => Invoke("Blow", .5f));
-
             }
             else if (caPush.CanMove)
             {
@@ -204,6 +207,7 @@ public class Boss : Character
             }
             else if (caSlash.CanMove)
             {
+                if (!canJump) return;
                 canAttack = false;
 
                 movement.MoveTo(myPlayer.transform.position, Slash);
@@ -226,6 +230,7 @@ public class Boss : Character
                     break;
 
                 case 1:
+                    if (!canJump) return;
                     canAttack = false;
                     caBlow.Restart();
 
@@ -233,10 +238,12 @@ public class Boss : Character
                     break;
 
                 case 2:
+                    if (!canJump) return;
                     Push();
                     break;
 
                 case 3:
+                    if (!canJump) return;
                     canAttack = false;
 
                     movement.MoveTo(myPlayer.transform.position, Slash);
