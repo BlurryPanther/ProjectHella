@@ -16,8 +16,10 @@ public partial class Attack : MonoBehaviour
         
     }
 
-    public void Shoot()
+    public void Shoot(Vector3 pos)
     {
-
+        GameObject bullet = ObjectPooling.Instance.RequestBullet();
+        bullet.transform.position = pos;
+        bullet.GetComponent<bullet>().GetDir();
     }
 }
