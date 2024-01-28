@@ -6,14 +6,24 @@ public partial class Attack : MonoBehaviour
 {
     Movement myMovement;
     bool damageOnHit = false;
+    int collitionDamage = 0;
+    [SerializeField] int slashDamage;
+    [SerializeField] float slashDis;
+    [SerializeField] int heavySlashDmg;
+    [SerializeField] float heavySlashDis;
+    [SerializeField] int blowDmg;
+    [SerializeField] int hitDmg;
+    [SerializeField] int thornsDmg = 2;
 
     private void FixedUpdate()
     {
         if (damageOnHit)
         {
-            if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), Vector3.left, Quaternion.identity, .1f, 1 << 9))
+            RaycastHit hit;
+            if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), Vector3.left, out hit, Quaternion.identity, .1f, 1 << 9))
             {
-                print("Damage");
+                if (hit.collider.GetComponent<Player>() is var p && p)
+                    p.Damage(thornsDmg, transform.position);
             }
         }
     }
@@ -21,35 +31,56 @@ public partial class Attack : MonoBehaviour
     public void EnableDagameOnHit(bool shouldEnable = true)
     {
         damageOnHit = shouldEnable;
+        collitionDamage = hitDmg;
         myMovement = GetComponent<Movement>();  
         print("Push!!");
     }
 
-    public void Slash(float dmg, bool buff = false)
+    public void Slash(bool buff = false)
     {
         print("Slash!!");
+        var target = DetectPlayer(slashDis);
+
+        if (target)
+            target.Damage(slashDamage, transform.position);
     }
 
-    public void HeavySlash(float dmg, bool buff = false)
+    public void HeavySlash(bool buff = false)
     {
         print("Heavy Slash!!");
+        var target = DetectPlayer(heavySlashDis);
+
+        target?.Damage(heavySlashDmg, transform.position);
     }
 
-    public void Blow(float radious)
+    public void Blow(float radious, Character target)
     {
         print("Blow");
+
+        if (Vector3.Distance(target.transform.position, transform.position) < radious)
+            target.Damage(blowDmg, transform.position);
     }
 
-    public void Trhow_Thorns()
+    public void Trhow_Thorns(Character target)
     {
         print("Thorns!!");
     }
 
-    private void OnTriggerEnter(Collider other)
+    private Character DetectPlayer(float dis)
     {
-        if (other.gameObject.CompareTag("Player"))
+        RaycastHit hit;
+        if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.CurDirection, out hit, Quaternion.identity, dis, 1 << 9))
         {
+            if (hit.collider.gameObject.GetComponent<Character>() is var c && c)
+            {
+                if (!hit.collider.TryGetComponent<Player>(out _))
+                {
 
+                    return c;
+                }
+            }
         }
+
+        return null;
     }
 }

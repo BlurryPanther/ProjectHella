@@ -12,6 +12,7 @@ public class Boss : Character
     [SerializeField] GameObject picos;
 
     [Header("Settings"), Space()]
+    [SerializeField, Range(0, 1)] float secondPhace;
     [SerializeField] float slashRate = 1;
     [SerializeField] float slashRange = 3;
     [SerializeField] float closeDis = 4;
@@ -41,13 +42,14 @@ public class Boss : Character
     public event Action OnDie;
 
     private GameObject myPlayer;
+    private Character target;
     bool isNear = false;
 
     public bool isClose = false;
-    [SerializeField] ConditialAction caSlash;
-    [SerializeField] ConditialAction caPush;
-    [SerializeField] ConditialAction caBlow;
-    [SerializeField] ConditialAction caThorns;
+    [SerializeField] myAction caSlash;
+    [SerializeField] myAction caPush;
+    [SerializeField] myAction caBlow;
+    [SerializeField] myAction caThorns;
 
     enum Hability
     {
@@ -91,10 +93,10 @@ public class Boss : Character
         movement = GetComponent<Movement>();
         attack = GetComponent<Attack>();
 
-        caSlash = new ConditialAction(slashRate, 4);
-        caPush = new ConditialAction(slashRate, 12);
-        caBlow = new ConditialAction(slashRate, 16);
-        caThorns = new ConditialAction(slashRate, 20);
+        caSlash = new myAction(slashRate, 4);
+        caPush = new myAction(slashRate, 12);
+        caBlow = new myAction(slashRate, 16);
+        caThorns = new myAction(slashRate, 20);
 
         Invoke("FindPlayer", 2);
     }
@@ -107,6 +109,16 @@ public class Boss : Character
             Attack();
 
         Move();
+
+        CheckPhase();
+    }
+
+    private void CheckPhase()
+    {
+        if (hp < hp * secondPhace)
+            fase = 2;
+        else
+            fase = 1;
     }
 
     private void OnDrawGizmos()
@@ -117,6 +129,8 @@ public class Boss : Character
 
     private void SetTimers()
     {
+        if (fase == 2) return;
+
         if (curDis == PlayerDis.Far)
         {
             if (playerPosition != PlayerPos.UnReachable)
@@ -170,38 +184,73 @@ public class Boss : Character
     {
         if (!canAttack) return;
 
-        if (caThorns.CanMove)
+        if (fase == 1)
         {
-            EnableThorns();
-        }
-        else if (caBlow.CanMove)
-        {
-            canAttack = false;
-            caBlow.Restart();
-
-            movement.MoveTo(myPlayer.transform.position, () => Invoke("Blow", .5f));
-            
-        }
-        else if (caPush.CanMove)
-        {
-            Push();
-        }
-        else if (caSlash.CanMove)
-        {
-            canAttack = false;
-
-            if (curDis == PlayerDis.Mid || curDis == PlayerDis.Far)
+            if (caThorns.CanMove)
             {
-                movement.MoveTo(myPlayer.transform.position, Slash);
+                EnableThorns();
             }
-            else
-                Slash();
+            else if (caBlow.CanMove)
+            {
+                canAttack = false;
+                caBlow.Restart();
+
+                movement.MoveTo(myPlayer.transform.position, () => Invoke("Blow", .5f));
+
+            }
+            else if (caPush.CanMove)
+            {
+                Push();
+            }
+            else if (caSlash.CanMove)
+            {
+                canAttack = false;
+
+                movement.MoveTo(myPlayer.transform.position, Slash);
+                //if (curDis == PlayerDis.Mid || curDis == PlayerDis.Far)
+                //{
+                //    movement.MoveTo(myPlayer.transform.position, Slash);
+                //}
+                //else
+                //    Slash();
+            } 
+        }
+        else
+        {
+            var rand = UnityEngine.Random.Range(0, 4);
+
+            switch (rand)
+            {
+                case 0:
+                    EnableThorns();
+                    break;
+
+                case 1:
+                    canAttack = false;
+                    caBlow.Restart();
+
+                    movement.MoveTo(myPlayer.transform.position, () => Invoke("Blow", .5f));
+                    break;
+
+                case 2:
+                    Push();
+                    break;
+
+                case 3:
+                    canAttack = false;
+
+                    movement.MoveTo(myPlayer.transform.position, Slash);
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 
     private void Blow()
     {
-        attack.Blow(explotionRadious);
+        attack.Blow(explotionRadious, target);
 
         DrawExplotionGizmo();
         Invoke("StopExplotion", 2);
@@ -214,7 +263,7 @@ public class Boss : Character
 
     private void Slash()
     {
-        attack.Slash(dmg);
+        attack.Slash();
         caSlash.Restart();
 
         Invoke("EnableAttack", slashRate);
@@ -333,7 +382,7 @@ public class Boss : Character
 }
 
 [Serializable]
-public class ConditialAction
+public class myAction
 {
     public float tgrTime;
     public float tick;
@@ -364,7 +413,7 @@ public class ConditialAction
         }
     }
 
-    public ConditialAction(float tick, float tgrTime, float? cdTime = null)
+    public myAction(float tick, float tgrTime, float? cdTime = null)
     {
         this.tgrTime = tgrTime;
         this.tick = tick;
@@ -374,7 +423,7 @@ public class ConditialAction
         canMove = true;
     }
 
-    public ConditialAction(float? cdTime)
+    public myAction(float? cdTime)
     {
         this.cdTime = cdTime;
         canMove= true;
