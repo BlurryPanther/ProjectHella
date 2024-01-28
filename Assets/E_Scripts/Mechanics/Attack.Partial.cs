@@ -4,7 +4,7 @@ using UnityEngine;
 
 public partial class Attack : MonoBehaviour
 {
-    Movement myMovement;
+    Movement movement;
     bool damageOnHit = false;
     int collitionDamage = 0;
     [SerializeField] int slashDamage;
@@ -32,7 +32,7 @@ public partial class Attack : MonoBehaviour
     {
         damageOnHit = shouldEnable;
         collitionDamage = hitDmg;
-        myMovement = GetComponent<Movement>();  
+        movement = GetComponent<Movement>();  
         print("Push!!");
     }
 
@@ -69,7 +69,7 @@ public partial class Attack : MonoBehaviour
     private Character DetectPlayer(float dis)
     {
         RaycastHit hit;
-        if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.CurDirection, out hit, Quaternion.identity, dis, 1 << 9))
+        if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), movement.CurDirection, out hit, Quaternion.identity, dis, 1 << 9))
         {
             if (hit.collider.gameObject.GetComponent<Character>() is var c && c)
             {
