@@ -7,7 +7,7 @@ public partial class Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        movement = GetComponent<Movement>();
     }
 
     // Update is called once per frame
