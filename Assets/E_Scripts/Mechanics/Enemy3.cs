@@ -6,12 +6,34 @@ public class Enemy3 : Character
     [SerializeField] protected GameObject edgeR;
     [SerializeField] GameObject droppable;
     bool canAttack = true;
+    [SerializeField] float minDis;
+    [SerializeField] float rateAttack;
     [SerializeField] ConditialAction caPush;
+    [SerializeField] Character target;
+
+    private void Awake()
+    {
+        target = FindObjectOfType<Player>();
+        attack = GetComponent<Attack>();
+        movement = GetComponent<Movement>();
+    }
 
     private void Start()
     {
         OnDead += DropMask;
-        caPush = new ConditialAction(2);
+        caPush = new ConditialAction(rateAttack);
+    }
+
+    private void FixedUpdate()
+    {
+        if (Vector3.Distance(target.transform.position, transform.position) < minDis)
+        {
+            if (caPush.canMove)
+            {
+                StartCoroutine(caPush.CoolDown());
+                Push();
+            }
+        }
     }
 
     private void DropMask()

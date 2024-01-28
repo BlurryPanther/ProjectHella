@@ -90,13 +90,13 @@ public class Player : Character
         if (callbackContext.canceled && callbackContext.duration < slashHold)
         {
             print("Slash in " + callbackContext.duration);
-            attack.Slash(dmg, fireMask);
+            attack.Slash(fireMask);
             StartCoroutine(caAttack.CoolDown());
         }
         if (callbackContext.performed)
         {
             print("Heavy Slash");
-            attack.HeavySlash(dmg, fireMask);
+            attack.HeavySlash(fireMask);
             StartCoroutine(caAttack.CoolDown());
         }
     }

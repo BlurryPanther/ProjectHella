@@ -82,7 +82,7 @@
                     "name": "",
                     "id": "976c29a8-fd0c-4369-8291-b07972ff322a",
                     "path": "<Keyboard>/leftArrow",
-                    "interactions": "Hold(duration=0.8)",
+                    "interactions": "Hold(duration=1)",
                     "processors": "",
                     "groups": "Generic",
                     "action": "HeavyAttack",
