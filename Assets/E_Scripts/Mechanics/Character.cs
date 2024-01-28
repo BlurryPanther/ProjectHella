@@ -10,6 +10,10 @@ public class Character : MonoBehaviour
     [SerializeField] float knockBackDis = .5f;
     protected Movement movement;
     protected Attack attack;
+
+    protected Animator animController;
+    protected SpriteRenderer charSrite;
+
     //Health
     public int maxHp = 8;
     [Space()]
