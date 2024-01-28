@@ -35,4 +35,9 @@ public class Character : MonoBehaviour
 
         //null coalesing opperator
     }
+
+    public virtual void Revive()
+    {
+        hp = maxHp;
+    }
 }

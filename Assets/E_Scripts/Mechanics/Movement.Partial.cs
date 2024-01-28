@@ -30,7 +30,7 @@ public partial class Movement : MonoBehaviour
             isGrounded = value;
         }
     }
-    public Vector3 CurDirection { get => curDirection; }
+    public Vector3 CurDirection { get => curDirection; set => curDir = value; }
 
     void PartialStart()
     {
@@ -98,6 +98,8 @@ public partial class Movement : MonoBehaviour
     public void Stop()
     {
         rb.velocity = Vector3.zero;
+        destiny = null;
+        curDir = Vector3.zero;
     }
 
     public void Jump()

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.UIElements;
 
 public class Player : Character
 {
@@ -39,7 +41,10 @@ public class Player : Character
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            CheckPoint.activePoint.RestartPoint();
+        }
     }
 
     #region Inputs
@@ -129,6 +134,20 @@ public class Player : Character
         curDir = movement.CurDirection;
         hp = this.hp;
         shield = 0;
+    }
+
+    public void LoadData(object data)
+    {
+        (this.fireMask,
+        this.jumpMask,
+        this.hpMask,
+        transform.position,
+        transform.localScale,
+        movement.CurDirection,
+        this.hp,
+        hp) = ((bool, bool, bool, Vector3, Vector3, Vector3, int, int)) data;
+
+        movement.Stop();
     }
 }
 

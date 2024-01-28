@@ -7,8 +7,8 @@ public class Boss : Character
 {
     #region Variables
     [Header("References"), Space()]
-    [SerializeField] GameObject edgeL;
-    [SerializeField] GameObject edgeR;
+    [SerializeField] protected GameObject edgeL;
+    [SerializeField] protected GameObject edgeR;
     [SerializeField] GameObject picos;
 
     [Header("Settings"), Space()]
@@ -41,8 +41,6 @@ public class Boss : Character
     public event Action OnDie;
 
     private GameObject myPlayer;
-    private Movement myMovement;
-    private Attack myAttack;
     bool isNear = false;
 
     public bool isClose = false;
@@ -90,8 +88,8 @@ public class Boss : Character
     #region Unity methods
     void Start()
     {
-        myMovement = GetComponent<Movement>();
-        myAttack = GetComponent<Attack>();
+        movement = GetComponent<Movement>();
+        attack = GetComponent<Attack>();
 
         caSlash = new ConditialAction(slashRate, 4);
         caPush = new ConditialAction(slashRate, 12);
@@ -181,7 +179,7 @@ public class Boss : Character
             canAttack = false;
             caBlow.Restart();
 
-            myMovement.MoveTo(myPlayer.transform.position, () => Invoke("Blow", .5f));
+            movement.MoveTo(myPlayer.transform.position, () => Invoke("Blow", .5f));
             
         }
         else if (caPush.CanMove)
@@ -194,7 +192,7 @@ public class Boss : Character
 
             if (curDis == PlayerDis.Mid || curDis == PlayerDis.Far)
             {
-                myMovement.MoveTo(myPlayer.transform.position, Slash);
+                movement.MoveTo(myPlayer.transform.position, Slash);
             }
             else
                 Slash();
@@ -203,7 +201,7 @@ public class Boss : Character
 
     private void Blow()
     {
-        myAttack.Blow(explotionRadious);
+        attack.Blow(explotionRadious);
 
         DrawExplotionGizmo();
         Invoke("StopExplotion", 2);
@@ -216,7 +214,7 @@ public class Boss : Character
 
     private void Slash()
     {
-        myAttack.Slash(dmg);
+        attack.Slash(dmg);
         caSlash.Restart();
 
         Invoke("EnableAttack", slashRate);
@@ -248,10 +246,10 @@ public class Boss : Character
         var edgePos = GetNearestEdge(out oppositeEdge);
         Vector3 dir1 = edgePos - transform.position;
 
-        myAttack.EnableDagameOnHit();
+        attack.EnableDagameOnHit();
 
-        myMovement.MoveTo(edgePos, () =>
-            myMovement.MoveTo(oppositeEdge, StopPush, 2.6f));
+        movement.MoveTo(edgePos, () =>
+            movement.MoveTo(oppositeEdge, StopPush, 2.6f));
 
         Vector3 GetNearestEdge(out Vector3 opposite)
         {
@@ -271,7 +269,7 @@ public class Boss : Character
 
     private void StopPush()
     {
-        myAttack.EnableDagameOnHit(false);
+        attack.EnableDagameOnHit(false);
         caPush.canMove = true;
 
         caPush.Restart();
@@ -281,7 +279,7 @@ public class Boss : Character
     private void Move()
     {
         //if (curDis == PlayerDis.Far)
-        //    myMovement.MyMove(myPlayer.transform.position - transform.position);
+        //    movement.MyMove(myPlayer.transform.position - transform.position);
     }
 
     private bool DetectPlayer()
@@ -299,7 +297,7 @@ public class Boss : Character
         else 
             curDis = PlayerDis.Far;
 
-        if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.CurDirection, Quaternion.identity, 1, 1 << 9))
+        if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), movement.CurDirection, Quaternion.identity, 1, 1 << 9))
         {
             playerPosition = PlayerPos.Front;
             print("Front");
@@ -309,7 +307,7 @@ public class Boss : Character
             playerPosition = PlayerPos.Up;
             print("Up");
         }
-        else if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), myMovement.CurDirection * -1, Quaternion.identity, 1, 1 << 9))
+        else if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), movement.CurDirection * -1, Quaternion.identity, 1, 1 << 9))
         {
             playerPosition = PlayerPos.Back;
             print("Back");

@@ -24,5 +24,13 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Player>())
+        {
+            Action();
+        }
+    }
+
     public virtual void Action() { }
 }
