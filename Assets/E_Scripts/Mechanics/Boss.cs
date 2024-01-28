@@ -393,7 +393,7 @@ public class ConditialAction
     //        {
     //            action?.Invoke();
 
-    //            yield return new WaitForSeconds(tick);
+    //            yield return new WaitForSeconds(rate);
 
     //            if (cdTime.HasValue)
     //                yield return new WaitForSeconds(cdTime.Value);

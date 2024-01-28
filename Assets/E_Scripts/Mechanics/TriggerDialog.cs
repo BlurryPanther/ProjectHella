@@ -31,13 +31,3 @@ public class Item : Interactable
         //Show dialog
     }
 }
-
-public class CheckPoint : Interactable
-{
-    public override void Action()
-    {
-        base.Action();
-
-        //Show dialog
-    }
-}

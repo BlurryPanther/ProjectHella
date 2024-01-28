@@ -116,6 +116,20 @@ public class Player : Character
             hpMask = true;
     }
     #endregion
+
+    public void Deconstruct(out bool fireMask, out bool jumpMask, out bool hpMask, 
+        out Vector3 position, out Vector3 localScale, out Vector3 curDir, out int hp,
+        out int shield)
+    {
+        fireMask = this.fireMask;
+        jumpMask = this.jumpMask;
+        hpMask = this.hpMask;
+        position = transform.position; 
+        localScale = transform.localScale;
+        curDir = movement.CurDirection;
+        hp = this.hp;
+        shield = 0;
+    }
 }
 
 public enum MaskType
