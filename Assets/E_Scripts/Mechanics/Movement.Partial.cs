@@ -16,6 +16,10 @@ public partial class Movement : MonoBehaviour
     bool canJump = true;
     Action callback = null;
 
+    [Space(), Header("Camera"), SerializeField]
+    GameObject cameraTarget;
+    [SerializeField] float xOffset;
+
     public bool IsGrounded
     {
         get => isGrounded;
@@ -43,15 +47,15 @@ public partial class Movement : MonoBehaviour
 
         var newDir = new Vector3()
         {
-            x = direction.x,
+            x = direction.x switch { < 0 => -1, > 0 => 1, _ => 0},
             y = rb.velocity.y,
             z = 0
         };
 
-        if (newDir.normalized.magnitude == 1)
-            curDirection = newDir.normalized;
+        if (newDir.x != 0)
+            curDirection = Vector3.right * newDir.x;
 
-        curDir = newDir.normalized;
+        curDir = newDir;
     }
 
     private void FixedUpdate()
@@ -81,6 +85,15 @@ public partial class Movement : MonoBehaviour
         }
         else
             (rb ??= GetComponent<Rigidbody>()).velocity = new Vector3(curDir.x * speed, rb.velocity.y, 0);
+
+        SetCameraTarget();
+    }
+
+    private void SetCameraTarget()
+    {
+        if (!cameraTarget) return;
+
+        cameraTarget.transform.position = transform.position + Vector3.right * curDirection.x * xOffset;
     }
 
     public void MoveTo(Vector3 destiny, Action callBack, float speedBoost = 1)
