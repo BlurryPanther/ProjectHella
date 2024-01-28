@@ -23,7 +23,7 @@ public partial class Attack : MonoBehaviour
             if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), Vector3.left, out hit, Quaternion.identity, .1f, 1 << 9))
             {
                 if (hit.collider.GetComponent<Player>() is var p && p)
-                    p.Damage(thornsDmg);
+                    p.Damage(thornsDmg, transform.position);
             }
         }
     }
@@ -42,7 +42,7 @@ public partial class Attack : MonoBehaviour
         var target = DetectPlayer(slashDis);
 
         if (target)
-            target.Damage(slashDamage);
+            target.Damage(slashDamage, transform.position);
     }
 
     public void HeavySlash(bool buff = false)
@@ -50,7 +50,7 @@ public partial class Attack : MonoBehaviour
         print("Heavy Slash!!");
         var target = DetectPlayer(heavySlashDis);
 
-        target?.Damage(heavySlashDmg);
+        target?.Damage(heavySlashDmg, transform.position);
     }
 
     public void Blow(float radious, Character target)
@@ -58,7 +58,7 @@ public partial class Attack : MonoBehaviour
         print("Blow");
 
         if (Vector3.Distance(target.transform.position, transform.position) < radious)
-            target.Damage(blowDmg);
+            target.Damage(blowDmg, transform.position);
     }
 
     public void Trhow_Thorns(Character target)

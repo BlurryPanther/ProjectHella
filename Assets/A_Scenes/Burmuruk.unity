@@ -2995,6 +2995,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fba977ab5550a24f9987d7dfd0bf4a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  immortalityTime: 1
+  knockBack: 1
+  knockBackDis: 1
   maxHp: 10
   hp: 5
   dmg: 3
@@ -3239,7 +3242,7 @@ MonoBehaviour:
   heavySlashDis: 4
   blowDmg: 0
   hitDmg: 0
-  thornsDmg: 2
+  thornsDmg: 0
 --- !u!1001 &1512554503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4387,6 +4390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259019571288981198, guid: d524fe2e86ff7de46b61b3a04835e77a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

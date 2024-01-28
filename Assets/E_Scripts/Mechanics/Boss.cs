@@ -46,10 +46,10 @@ public class Boss : Character
     bool isNear = false;
 
     public bool isClose = false;
-    [SerializeField] ConditialAction caSlash;
-    [SerializeField] ConditialAction caPush;
-    [SerializeField] ConditialAction caBlow;
-    [SerializeField] ConditialAction caThorns;
+    [SerializeField] myAction caSlash;
+    [SerializeField] myAction caPush;
+    [SerializeField] myAction caBlow;
+    [SerializeField] myAction caThorns;
 
     enum Hability
     {
@@ -93,10 +93,10 @@ public class Boss : Character
         movement = GetComponent<Movement>();
         attack = GetComponent<Attack>();
 
-        caSlash = new ConditialAction(slashRate, 4);
-        caPush = new ConditialAction(slashRate, 12);
-        caBlow = new ConditialAction(slashRate, 16);
-        caThorns = new ConditialAction(slashRate, 20);
+        caSlash = new myAction(slashRate, 4);
+        caPush = new myAction(slashRate, 12);
+        caBlow = new myAction(slashRate, 16);
+        caThorns = new myAction(slashRate, 20);
 
         Invoke("FindPlayer", 2);
     }
@@ -382,7 +382,7 @@ public class Boss : Character
 }
 
 [Serializable]
-public class ConditialAction
+public class myAction
 {
     public float tgrTime;
     public float tick;
@@ -413,7 +413,7 @@ public class ConditialAction
         }
     }
 
-    public ConditialAction(float tick, float tgrTime, float? cdTime = null)
+    public myAction(float tick, float tgrTime, float? cdTime = null)
     {
         this.tgrTime = tgrTime;
         this.tick = tick;
@@ -423,7 +423,7 @@ public class ConditialAction
         canMove = true;
     }
 
-    public ConditialAction(float? cdTime)
+    public myAction(float? cdTime)
     {
         this.cdTime = cdTime;
         canMove= true;

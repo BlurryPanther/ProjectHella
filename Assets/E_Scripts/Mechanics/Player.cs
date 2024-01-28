@@ -11,8 +11,8 @@ public class Player : Character
     [SerializeField] bool hpMask;
     [SerializeField] bool fireMask;
     [SerializeField] bool jumpMask;
-    ConditialAction caAttack;
-    ConditialAction caJump;
+    myAction caAttack;
+    myAction caJump;
     float curHeavySlashTime = 0;
     bool slashPerformed = false;
     [SerializeField] double slashHold = .2;
@@ -24,8 +24,8 @@ public class Player : Character
     {
         movement = GetComponent<Movement>();
         attack = GetComponent<Attack>();
-        caAttack = new ConditialAction(.1f);
-        caJump = new ConditialAction(.1f);
+        caAttack = new myAction(.1f);
+        caJump = new myAction(.1f);
     }
 
     // Update is called once per frame

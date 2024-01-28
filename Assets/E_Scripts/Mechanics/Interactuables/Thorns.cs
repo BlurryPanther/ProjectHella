@@ -10,6 +10,6 @@ public class Thorns : Interactable
 
         var target = FindObjectOfType<Player>();
 
-        target.Damage(dmg);
+        target.Damage(dmg, transform.position);
     }
 }

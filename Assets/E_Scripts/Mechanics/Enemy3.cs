@@ -8,7 +8,7 @@ public class Enemy3 : Character
     bool canAttack = true;
     [SerializeField] float minDis;
     [SerializeField] float rateAttack;
-    [SerializeField] ConditialAction caPush;
+    [SerializeField] myAction caPush;
     [SerializeField] Character target;
 
     private void Awake()
@@ -21,7 +21,7 @@ public class Enemy3 : Character
     private void Start()
     {
         OnDead += DropMask;
-        caPush = new ConditialAction(rateAttack);
+        caPush = new myAction(rateAttack);
     }
 
     private void FixedUpdate()

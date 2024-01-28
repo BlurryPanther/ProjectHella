@@ -148,6 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d699518dff6d04a87939dc632374bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  immortalityTime: 1
+  knockBack: 0
+  knockBackDis: 0.5
   maxHp: 10
   hp: 60
   dmg: 3
@@ -205,11 +208,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slashDamage: 1
-  slashDis: 3
-  heavySlashDmg: 0
-  heavySlashDis: 0
-  blowDmg: 3
-  hitDmg: 2
+  slashDis: 2
+  heavySlashDmg: 1
+  heavySlashDis: 4
+  blowDmg: 2
+  hitDmg: 1
   thornsDmg: 2
 --- !u!114 &7791642516340111759
 MonoBehaviour:
