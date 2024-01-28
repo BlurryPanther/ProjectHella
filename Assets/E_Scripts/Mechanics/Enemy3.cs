@@ -28,7 +28,7 @@ public class Enemy3 : Character
     {
         if (Vector3.Distance(target.transform.position, transform.position) < minDis)
         {
-            if (caPush.canMove)
+            if (caPush.canMove && canJump)
             {
                 StartCoroutine(caPush.CoolDown());
                 Push();

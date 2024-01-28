@@ -30,9 +30,10 @@ public class Player : Character
         caJump = new myAction(.1f);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             CheckPoint.activePoint.RestartPoint();
@@ -73,29 +74,35 @@ public class Player : Character
     public void Jump(InputAction.CallbackContext callbackContext)
     {
         if (!caJump.canMove) return;
+        if ((isGrounded && jumpsCount > 0) || (!IsGrounded && jumpsCount > 1) || !canJump) return;
+
+        if (jumpsCount > 0 && !jumpMask) return;
+
+        bool basicJump = jumpsCount <= 0;
 
         if (callbackContext.canceled)
         {
             double timePercent = callbackContext.duration < jumpHold ? 0 : callbackContext.duration / maxJumpHold;
-            movement.Jump(jumpMask, (float)timePercent);
+
+            movement.Jump(basicJump, (float)timePercent);
             StartCoroutine(caJump.CoolDown());
+
+            DisableJump();
         }
         if (callbackContext.performed)
         {
-            movement.Jump(jumpMask, 1);
+            movement.Jump(basicJump, 1);
             StartCoroutine(caJump.CoolDown());
+            
+            DisableJump();
         }
     }
 
-    public void Attack(InputAction.CallbackContext callbackContext)
+    private void DisableJump()
     {
-        //if (!caAttack.canMove) return;
-
-        //if (callbackContext.canceled)
-        //{
-        //    StartCoroutine(AttackCoolDown());
-        //    attack.Slash(dmg, fireMask ? true : false);
-        //}
+        canJump = false;
+        jumpsCount++;
+        Invoke("EnableJump", .3f);
     }
 
     public void HeavyAttack(InputAction.CallbackContext callbackContext)
@@ -104,7 +111,6 @@ public class Player : Character
 
         if (callbackContext.canceled && callbackContext.duration < slashHold)
         {
-            print("Slash in " + callbackContext.duration);
             animController.SetBool("isLightAttacking", true);
             attack.Slash(fireMask);
             StartCoroutine(caAttack.CoolDown());
@@ -112,7 +118,6 @@ public class Player : Character
         }
         if (callbackContext.performed)
         {
-            print("Heavy Slash");
             animController.SetBool("isHeavyAttacking", true);
             attack.HeavySlash(fireMask);
             StartCoroutine(caAttack.CoolDown());

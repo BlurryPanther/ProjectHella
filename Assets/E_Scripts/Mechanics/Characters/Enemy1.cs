@@ -14,10 +14,4 @@ public class Enemy1 : MonoBehaviour
         player = GameObject.Find("Player");
         dir = player.transform.position - transform.position;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
