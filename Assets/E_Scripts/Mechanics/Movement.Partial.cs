@@ -9,11 +9,11 @@ public partial class Movement : MonoBehaviour
     [SerializeField] Vector3 curDirection = Vector3.right;
     [SerializeField] bool isGrounded = false;
     
-    float speedBoost = 10;
+    [SerializeField] float speedBoost = 10;
     Vector3? destiny = null;
     Vector3 curDir = Vector3.zero;
     bool canMove = true;
-    bool inJump = false;
+    bool canJump = true;
     Action callback = null;
 
     public bool IsGrounded
@@ -21,9 +21,10 @@ public partial class Movement : MonoBehaviour
         get => isGrounded;
         private set
         {
-            if (value)
+            if (value && canJump)
             {
-                inJump = false;
+                canJump = true;
+                jumpsCount = 0;
             }
 
             isGrounded = value;
@@ -84,7 +85,7 @@ public partial class Movement : MonoBehaviour
 
     public void MoveTo(Vector3 destiny, Action callBack, float speedBoost = 1)
     {
-        if (!canMove || inJump) return;
+        if (!canMove || !canJump) return;
 
         this.destiny = destiny;
         this.callback = callBack;
@@ -101,12 +102,39 @@ public partial class Movement : MonoBehaviour
 
     public void Jump()
     {
-        if (!isGrounded) return;
+        if ((isGrounded && jumpsCount > 0) || (!IsGrounded && jumpsCount > 1) || !canJump) return;
 
-        inJump = true;
-
+        canJump = false;
+        jumpsCount++;
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+        Invoke("EnableJump", .3f);
     }
+
+    public void Jump(bool basicJump, float holdTime)
+    {
+        if ((isGrounded && jumpsCount > 0) || (!IsGrounded && jumpsCount > 1) || !canJump) return;
+
+        var jumpForce = jumpsCount == 0 ? GetJumpVelocity(basicJump, holdTime) : this.jumpForce;
+        canJump = false;
+        jumpsCount++;
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+        Invoke("EnableJump", .3f);
+    }
+
+    private float GetJumpVelocity(in bool basicJump, in float holdTime)
+    {
+        var minH = basicJump ? minFirstJumpHeight : minSecJumpHeight;
+        var maxH = basicJump ? maxFirstJumpHeight : maxSecJumpHeight;
+        var gapHeight = maxH - minH;
+
+        var extraHeigh = holdTime * gapHeight;
+
+        return Mathf.Sqrt((minH + extraHeigh) * 2 * Physics.gravity.magnitude);
+    }
+
+    private void EnableJump() => canJump = true;
 
     private void DetectWall()
     {

@@ -24,15 +24,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "8fd21cb6-f487-4a1e-9d2e-89d1138c053b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "HeavyAttack",
                     "type": "Button",
                     "id": "00ff01f6-5674-44e0-a3fe-ad8ae55b870b",
@@ -47,7 +38,7 @@
                     "name": "",
                     "id": "b0993576-e589-4046-a769-1af9ba18d03e",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.5)",
                     "processors": "",
                     "groups": "Generic",
                     "action": "Jump",
@@ -88,32 +79,10 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Attack",
-                    "id": "fb68f963-db79-4873-88a6-4f77e6562e73",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d15b8d9c-ad0b-497f-973f-37d3a1109b84",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "",
                     "id": "976c29a8-fd0c-4369-8291-b07972ff322a",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "Hold(duration=0.8)",
                     "processors": "",
                     "groups": "Generic",
                     "action": "HeavyAttack",
