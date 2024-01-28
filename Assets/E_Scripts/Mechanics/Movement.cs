@@ -4,6 +4,9 @@ using UnityEngine;
 
 public partial class Movement : MonoBehaviour
 {
+
+    Player player;
+
     private Rigidbody rb;
     [Header("Settings"), Space(10)]
     [SerializeField] private float speed;
@@ -27,6 +30,7 @@ public partial class Movement : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        player = FindObjectOfType<Player>();
         //rb = GetComponent<Rigidbody>();
         PartialStart();
     }

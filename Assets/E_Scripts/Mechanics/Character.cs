@@ -48,10 +48,6 @@ public class Character : MonoBehaviour
         if (hp <= 0 || !caImmortality.canMove) return;
 
         hp -= value;
-        if (hp <= 0)
-        {
-            OnDead?.Invoke();
-        }
 
         StartCoroutine(caImmortality.CoolDown());
 
@@ -83,5 +79,9 @@ public class Character : MonoBehaviour
     }
     public void KillCharacter()
     {
+        if (hp <= 0)
+        {
+            OnDead?.Invoke();
+        }
     }
 }

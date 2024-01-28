@@ -37,6 +37,12 @@ public class Player : Character
         {
             CheckPoint.activePoint.RestartPoint();
         }
+
+        if (hp <= 0)
+        {
+            KillCharacter();
+            animController.SetBool("isDead", true);
+        }
     }
 
     #region Inputs
@@ -99,14 +105,18 @@ public class Player : Character
         if (callbackContext.canceled && callbackContext.duration < slashHold)
         {
             print("Slash in " + callbackContext.duration);
+            animController.SetBool("isLightAttacking", true);
             attack.Slash(fireMask);
             StartCoroutine(caAttack.CoolDown());
+            Invoke("EndAnim", 1);
         }
         if (callbackContext.performed)
         {
             print("Heavy Slash");
+            animController.SetBool("isHeavyAttacking", true);
             attack.HeavySlash(fireMask);
             StartCoroutine(caAttack.CoolDown());
+            Invoke("EndAnim", 1);
         }
     }
 
@@ -150,6 +160,12 @@ public class Player : Character
         hp) = ((bool, bool, bool, Vector3, Vector3, Vector3, int, int)) data;
 
         movement.Stop();
+    }
+
+    void EndAnim()
+    {
+        animController.SetBool("isLightAttacking", false);
+        animController.SetBool("isHeavyAttacking", false);
     }
 }
 

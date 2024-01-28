@@ -19,7 +19,6 @@ public partial class Movement : MonoBehaviour
     [Space(), Header("Camera"), SerializeField]
     GameObject cameraTarget;
     [SerializeField] float xOffset;
-    BoxCollider col;
 
     public bool IsGrounded
     {
@@ -170,14 +169,16 @@ public partial class Movement : MonoBehaviour
     private bool DetectGround()
     {
         rb = GetComponent<Rigidbody>();
+        //Ray ray = new Ray(transform.position, Vector3.down);
+        //var hits = Physics.RaycastAll(ray, 3, 1 << 1);
         Vector3 size = new(.5f, .5f, .5f);
-        var dis = (col??= GetComponent<BoxCollider>()).bounds.extents.y + .5f;
+        var dir = (transform.position + Vector3.down) - transform.position;
 
-        var hits = Physics.BoxCastAll(transform.position, Vector3.one, Vector3.down, Quaternion.identity, dis, 1 << 0);
+        var hits = Physics.BoxCastAll(transform.position, Vector3.one, Vector3.down, Quaternion.identity, .6f, 1 << 0);
 
         foreach (var hit in hits)
         {
-            if (Vector3.Angle(hit.normal, Vector3.up) < 10)
+            if (Vector3.Angle(hit.point, Vector3.up) < 10)
             {
                 IsGrounded = true;
                 return true;
