@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
     protected Movement movement;
     protected Attack attack;
     //Health
-    public int maxHp = 10;
+    public int maxHp = 8;
     public int hp = 5;
 
     //Damage
@@ -30,9 +30,17 @@ public class Character : MonoBehaviour
 
     public void Damage(int value)
     {
+        hp -= value;
         if (hp <= 0)
+        {
             OnDead?.Invoke();
+        }
 
         //null coalesing opperator
+    }
+
+    public void KillCharacter()
+    {
+
     }
 }

@@ -1304,7 +1304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &611159044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3148,6 +3148,7 @@ MonoBehaviour:
   jumpMask: 0
   slashHold: 0.2
   jumpHold: 0.1
+  maxJumpHold: 0.5
 --- !u!54 &1496516946
 Rigidbody:
   m_ObjectHideFlags: 0

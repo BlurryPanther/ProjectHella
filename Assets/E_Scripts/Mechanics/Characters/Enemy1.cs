@@ -5,16 +5,19 @@ using UnityEngine;
 public class Enemy1 : MonoBehaviour
 {
     Movement movement;
+    GameObject player;
+    Vector3 dir;
     // Start is called before the first frame update
     void Start()
     {
         movement = gameObject.GetComponent<Movement>();
-        //movement.Start();
+        player = GameObject.Find("Player");
+        dir = player.transform.position - transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        movement.Move(gameObject.GetComponent<Rigidbody>());
+
     }
 }

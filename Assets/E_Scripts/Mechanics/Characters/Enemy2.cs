@@ -17,26 +17,37 @@ public class Enemy2 : Character
     // Update is called once per frame
     void Update()
     {
-        count++;
-        if (count >= timer)
-        {
-            canAttack = true;
-            count = 0;
-        }
-
-
         if (canAttack)
         {
-            GameObject bullet = ObjectPooling.Instance.RequestBullet();
-            bullet.transform.position = new Vector3
+            count++;
+
+            if (count >= timer)
             {
-                x = transform.position.x + 1,
-                y = transform.position.y,
-                z = 0
-            };
-            bullet.GetComponent<bullet>().GetDir();
-            //attack.Shoot(new Vector3(transform.position.x + 1, transform.position.y, 0));
-            canAttack = false;
+                CallBullet();
+                count = 0;
+            }
+        }
+    }
+
+    void CallBullet()
+    {
+        GameObject bullet = ObjectPooling.Instance.RequestBullet();
+        bullet.transform.position = new Vector3
+        {
+            x = transform.position.x + 1,
+            y = transform.position.y,
+            z = 0
+        };
+        bullet.GetComponent<bullet>().GetDir();
+        //attack.Shoot(new Vector3(transform.position.x + 1, transform.position.y, 0));
+        //canAttack = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            canAttack = true;
         }
     }
 }

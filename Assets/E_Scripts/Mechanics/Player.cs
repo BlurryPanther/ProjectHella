@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Player : Character
 {
-    private static Player instance;
-    public Player Instance { get { return instance; } }
+
     [SerializeField] bool hpMask;
     [SerializeField] bool fireMask;
     [SerializeField] bool jumpMask;
@@ -17,15 +16,6 @@ public class Player : Character
     [SerializeField] double slashHold = .2;
     [SerializeField] double jumpHold = .2;
     [SerializeField] double maxJumpHold = .5;
-
-
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -113,7 +103,10 @@ public class Player : Character
         else if (type == MaskType.Jump)
             jumpMask = true;
         else
+        {
             hpMask = true;
+            hp = maxHp;
+        }
     }
     #endregion
 
