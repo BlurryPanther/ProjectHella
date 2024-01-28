@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 14a64fa805ffd65419135adfa97b33d1
+guid: 6672aeec7c7360643abf9f937182ee0e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,18 +108,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Copia de Copia de piso marmol 2  copia_0
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 40
+        width: 500
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fccc3b9355e69d2468c72259e297eb31
+      internalID: 2047645654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: d05109c19471ba6419d10043d4b4d104
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Copia de Copia de piso marmol 2  copia_0: 2047645654
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

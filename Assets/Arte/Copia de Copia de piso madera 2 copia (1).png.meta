@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 14a64fa805ffd65419135adfa97b33d1
+guid: 04f3bd6af59f6154692bb00e4a757e5b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,18 +108,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Copia de Copia de piso madera 2 copia (1)_0
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 120
+        width: 500
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d3e2e9b10e5c6948ba386c06473a33f
+      internalID: 1920530696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 3f85857bb6e365b40ada1f090f4d2fce
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Copia de Copia de piso madera 2 copia (1)_0: 1920530696
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
