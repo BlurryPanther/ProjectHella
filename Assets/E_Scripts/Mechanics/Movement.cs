@@ -35,9 +35,9 @@ public partial class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move();
 
-        Physics.Raycast(groundCheck.transform.position, speed * Vector2.left, out wc, .25f, layer);
+        //Physics.Raycast(groundCheck.transform.position, speed * Vector2.left, out wc, .25f, layer);
         //Debug.DrawRay(GC.transform.position, wcd * Vector2.left * .25f, Color.red);
         
     }

@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,9 +7,17 @@ public class Player : Character
 {
     private static Player instance;
     public Player Instance { get { return instance; } }
-    bool hpMask;
-    bool fireMask;
-    bool jumpMask;
+    [SerializeField] bool hpMask;
+    [SerializeField] bool fireMask;
+    [SerializeField] bool jumpMask;
+    ConditialAction caAttack;
+    ConditialAction caJump;
+    float curHeavySlashTime = 0;
+    bool slashPerformed = false;
+    [SerializeField] double slashHold = .2;
+    [SerializeField] double jumpHold = .2;
+    [SerializeField] double maxJumpHold = .5;
+
 
     private void Awake()
     {
@@ -22,7 +32,8 @@ public class Player : Character
     {
         movement = GetComponent<Movement>();
         attack = GetComponent<Attack>();
-
+        caAttack = new ConditialAction(.1f);
+        caJump = new ConditialAction(.1f);
     }
 
     // Update is called once per frame
@@ -51,25 +62,47 @@ public class Player : Character
 
     public void Jump(InputAction.CallbackContext callbackContext)
     {
+        if (!caJump.canMove) return;
+
+        if (callbackContext.canceled)
+        {
+            double timePercent = callbackContext.duration < jumpHold ? 0 : callbackContext.duration / maxJumpHold;
+            movement.Jump(jumpMask, (float)timePercent);
+            StartCoroutine(caJump.CoolDown());
+        }
         if (callbackContext.performed)
         {
-            movement.Jump();
+            movement.Jump(jumpMask, 1);
+            StartCoroutine(caJump.CoolDown());
         }
     }
 
     public void Attack(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.canceled && callbackContext.startTime < 26)
-            attack.Slash(dmg, fireMask ? true : false);
-        else
-            print(callbackContext.startTime);
+        //if (!caAttack.canMove) return;
+
+        //if (callbackContext.canceled)
+        //{
+        //    StartCoroutine(AttackCoolDown());
+        //    attack.Slash(dmg, fireMask ? true : false);
+        //}
     }
 
     public void HeavyAttack(InputAction.CallbackContext callbackContext)
     {
+        if (!caAttack.canMove) return;
+
+        if (callbackContext.canceled && callbackContext.duration < slashHold)
+        {
+            print("Slash in " + callbackContext.duration);
+            attack.Slash(dmg, fireMask);
+            StartCoroutine(caAttack.CoolDown());
+        }
         if (callbackContext.performed)
         {
-            attack.HeavySlash(dmg, fireMask ? true : false);
+            print("Heavy Slash");
+            attack.HeavySlash(dmg, fireMask);
+            StartCoroutine(caAttack.CoolDown());
         }
     }
 
@@ -92,3 +125,4 @@ public enum MaskType
     HP,
     Fire
 }
+

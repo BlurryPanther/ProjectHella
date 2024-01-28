@@ -85,79 +85,6 @@ public class Boss : Character
         public float progress = 0;
         public bool enable = false;
     }
-
-    [Serializable]
-    class ConditialAction
-    {
-        public float tgrTime;
-        public float tick;
-        //public bool isRunning;
-        public float? cdTime;
-        public float progress = 0;
-        float curTime;
-        Action action;
-        public bool canMove;
-
-        public bool CanMove
-        {
-            get
-            {
-                if (canMove && curTime >= tgrTime)
-                    return true;
-
-                return false;
-            }
-        }
-
-        public float CurTime
-        {
-            get => curTime;
-            set
-            {
-                curTime = curTime + value >= tgrTime ? tgrTime : value;
-            }
-        }
-
-        public ConditialAction(float tick, float tgrTime, Action action, float? cdTime = null)
-        {
-            this.tgrTime = tgrTime;
-            this.tick = tick;
-            curTime = 0;
-            this.action = action;
-            this.cdTime = cdTime;
-            canMove = true;
-        }
-
-        //public IEnumerator StartLoop()
-        //{
-        //    isRunning = true;
-        //    curTime = 0;
-
-        //    try
-        //    {
-        //        while (true)
-        //        {
-        //            action?.Invoke();
-
-        //            yield return new WaitForSeconds(tick);
-
-        //            if (cdTime.HasValue)
-        //                yield return new WaitForSeconds(cdTime.Value);
-        //        }
-        //    }
-        //    finally
-        //    {
-        //        isRunning = false;
-        //    }
-        //}
-
-        public void Restart()
-        {
-            //isRunning = false;
-            curTime = 0;
-            canMove = true;
-        }
-    } 
     #endregion
 
     #region Unity methods
@@ -166,10 +93,10 @@ public class Boss : Character
         myMovement = GetComponent<Movement>();
         myAttack = GetComponent<Attack>();
 
-        caSlash = new ConditialAction(slashRate, 4, () => myAttack.Slash(dmg));
-        caPush = new ConditialAction(slashRate, 12, () => { });
-        caBlow = new ConditialAction(slashRate, 16, () => { });
-        caThorns = new ConditialAction(slashRate, 20, myAttack.Trhow_Thorns);
+        caSlash = new ConditialAction(slashRate, 4);
+        caPush = new ConditialAction(slashRate, 12);
+        caBlow = new ConditialAction(slashRate, 16);
+        caThorns = new ConditialAction(slashRate, 20);
 
         Invoke("FindPlayer", 2);
     }
@@ -254,7 +181,7 @@ public class Boss : Character
             canAttack = false;
             caBlow.Restart();
 
-            myMovement.MoveTo(myPlayer.transform.position, () => Invoke("Blow", 1));
+            myMovement.MoveTo(myPlayer.transform.position, () => Invoke("Blow", .5f));
             
         }
         else if (caPush.CanMove)
@@ -278,9 +205,9 @@ public class Boss : Character
     {
         myAttack.Blow(explotionRadious);
 
-        InvokeRepeating("DrawExplotionGizmo", 1.5f, .05f);
-        Invoke("EnableAttack", 2);
+        DrawExplotionGizmo();
         Invoke("StopExplotion", 2);
+        Invoke("EnableAttack", 2);
     }
 
     private void DrawExplotionGizmo() => drawExplotion = true;
@@ -405,4 +332,92 @@ public class Boss : Character
 
     void FindPlayer() =>
         myPlayer = FindObjectOfType<Player>().gameObject;
+}
+
+[Serializable]
+public class ConditialAction
+{
+    public float tgrTime;
+    public float tick;
+    //public bool isRunning;
+    public float? cdTime;
+    public float progress = 0;
+    float curTime;
+    Action action;
+    public bool canMove;
+
+    public bool CanMove
+    {
+        get
+        {
+            if (canMove && curTime >= tgrTime)
+                return true;
+
+            return false;
+        }
+    }
+
+    public float CurTime
+    {
+        get => curTime;
+        set
+        {
+            curTime = value >= tgrTime ? tgrTime : value;
+        }
+    }
+
+    public ConditialAction(float tick, float tgrTime, float? cdTime = null)
+    {
+        this.tgrTime = tgrTime;
+        this.tick = tick;
+        curTime = 0;
+        this.action = null;
+        this.cdTime = cdTime;
+        canMove = true;
+    }
+
+    public ConditialAction(float? cdTime)
+    {
+        this.cdTime = cdTime;
+        canMove= true;
+    }
+
+    //public IEnumerator StartLoop()
+    //{
+    //    isRunning = true;
+    //    curTime = 0;
+
+    //    try
+    //    {
+    //        while (true)
+    //        {
+    //            action?.Invoke();
+
+    //            yield return new WaitForSeconds(tick);
+
+    //            if (cdTime.HasValue)
+    //                yield return new WaitForSeconds(cdTime.Value);
+    //        }
+    //    }
+    //    finally
+    //    {
+    //        isRunning = false;
+    //    }
+    //}
+
+    public IEnumerator CoolDown()
+    {
+        canMove = false;
+
+        yield return new WaitForSeconds(cdTime.Value);
+
+        canMove = true;
+    }
+
+    public void Restart()
+    {
+        //isRunning = false;
+        curTime = 0;
+        canMove = true;
+    }
 }
