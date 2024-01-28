@@ -339,8 +339,8 @@ GameObject:
   - component: {fileID: 764720141}
   - component: {fileID: 764720140}
   - component: {fileID: 764720139}
-  m_Layer: 6
-  m_Name: Cube
+  m_Layer: 0
+  m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1374,6 +1374,8 @@ MonoBehaviour:
   curDirection: {x: 1, y: 0, z: 0}
   isGrounded: 0
   speedBoost: 10
+  cameraTarget: {fileID: 0}
+  xOffset: 0
 --- !u!54 &3379805154873064901
 Rigidbody:
   m_ObjectHideFlags: 0
