@@ -276,6 +276,8 @@ MonoBehaviour:
   maxHp: 10
   hp: 5
   dmg: 3
+  isGrounded: 0
+  jumpsCount: 0
   canAttack: 0
   count: 0
   timer: 500
@@ -598,6 +600,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186813218957103717, guid: bcc0d33020487dc478f8d1eeabc4980d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

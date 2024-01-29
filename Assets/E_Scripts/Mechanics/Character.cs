@@ -39,6 +39,13 @@ public class Character : MonoBehaviour
             if (value && canJump)
             {
                 canJump = true;
+                if (jumpsCount > 1)
+                {
+                    animController.SetBool("isJumping", false);
+                    animController.SetBool("isSecondJumping", false);
+                }
+                if (jumpsCount == 1)
+                    animController.SetBool("isJumping", false);
                 jumpsCount = 0;
             }
 
@@ -67,10 +74,12 @@ public class Character : MonoBehaviour
     {
         if (hp <= 0 || !caImmortality.canMove) return;
 
+        animController.SetBool("gotHit", true);
         hp -= value;
 
-        StartCoroutine(caImmortality.CoolDown());
 
+        Invoke("EndAnimC", .5f);
+        StartCoroutine(caImmortality.CoolDown());
         //if (pos != null)
         //    KnockBack(pos.Value);
         //null coalesing opperator
@@ -125,5 +134,10 @@ public class Character : MonoBehaviour
 
         IsGrounded = false;
         return false;
+    }
+
+    void EndAnimC()
+    {
+        animController.SetBool("gotHit", false);
     }
 }

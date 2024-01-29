@@ -82,6 +82,16 @@ public class Player : Character
 
         if (callbackContext.canceled)
         {
+            if (jumpsCount == 1)
+            {
+                animController.SetBool("isJumping", true);
+                animController.SetBool("isSecondJumping", true);
+            }
+            else if (jumpsCount == 0)
+            {
+                animController.SetBool("isJumping", true);
+            }
+
             double timePercent = callbackContext.duration < jumpHold ? 0 : callbackContext.duration / maxJumpHold;
 
             movement.Jump(basicJump, (float)timePercent);
@@ -91,6 +101,16 @@ public class Player : Character
         }
         if (callbackContext.performed)
         {
+            if (jumpsCount == 1)
+            {
+                animController.SetBool("isJumping", true);
+                animController.SetBool("isSecondJumping", true);
+            }
+            else if (jumpsCount == 0)
+            {
+                animController.SetBool("isJumping", true);
+            }
+            
             movement.Jump(basicJump, 1);
             StartCoroutine(caJump.CoolDown());
             
