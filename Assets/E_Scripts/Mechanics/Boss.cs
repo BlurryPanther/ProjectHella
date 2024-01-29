@@ -302,6 +302,7 @@ public class Boss : Character
         Vector3 dir1 = edgePos - transform.position;
 
         attack.EnableDagameOnHit();
+        animController.SetBool("isMoving", true);
 
         movement.MoveTo(edgePos, () =>
             movement.MoveTo(oppositeEdge, StopPush, 2.6f));
@@ -329,6 +330,7 @@ public class Boss : Character
 
         caPush.Restart();
         canAttack = true;
+        animController.SetBool("isMoving", false);
     }
 
     private void Move()

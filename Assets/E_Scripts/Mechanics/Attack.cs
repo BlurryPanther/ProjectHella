@@ -8,6 +8,7 @@ public partial class Attack : MonoBehaviour
     void Start()
     {
         movement = GetComponent<Movement>();
+        animController = GetComponent<Animator>();
     }
 
     // Update is called once per frame

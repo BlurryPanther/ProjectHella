@@ -14,6 +14,7 @@ public partial class Attack : MonoBehaviour
     [SerializeField] int blowDmg;
     [SerializeField] int hitDmg;
     [SerializeField] int thornsDmg = 2;
+    Animator animController;
 
     private void FixedUpdate()
     {
@@ -23,10 +24,17 @@ public partial class Attack : MonoBehaviour
             if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), Vector3.left, out hit, Quaternion.identity, .1f, 1 << 9))
             {
                 if (hit.collider.GetComponent<Player>() is var p && p)
+                {
                     p.Damage(thornsDmg, transform.position);
+                    animController.SetBool("isAttacking", true);
+                    Invoke("StopContactHitAnim", .4f);
+                }
             }
         }
     }
+
+    private void StopContactHitAnim() =>
+        animController.SetBool("isAttacking", false);
 
     public void EnableDagameOnHit(bool shouldEnable = true)
     {

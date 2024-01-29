@@ -9,6 +9,7 @@ public partial class Movement : MonoBehaviour
     [SerializeField] Vector3 curDirection = Vector3.right;
     
     [SerializeField] float speedBoost = 10;
+    [SerializeField] int startDir = -1;
     Vector3? destiny = null;
     Vector3 curDir = Vector3.zero;
     bool canMove = true;
@@ -22,12 +23,14 @@ public partial class Movement : MonoBehaviour
     public float maxFirstJumpHeight = 7;
     public float minSecJumpHeight = 2;
     public float maxSecJumpHeight = 4;
+    protected SpriteRenderer charSrite;
 
     public Vector3 CurDirection { get => curDirection; set => curDir = value; }
 
     void PartialStart()
     {
         curDirection = Vector3.right;
+        charSrite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     public void MyMove(Vector3 direction)
@@ -72,6 +75,8 @@ public partial class Movement : MonoBehaviour
         }
         else
             (rb ??= GetComponent<Rigidbody>()).velocity = new Vector3(curDir.x * speed, rb.velocity.y, 0);
+
+        charSrite.flipX = curDirection.x != startDir;
 
         SetCameraTarget();
     }

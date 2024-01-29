@@ -23,8 +23,6 @@ public class Player : Character
     protected override void Start()
     {
         base.Start();
-
-        charSrite = gameObject.GetComponent<SpriteRenderer>();
         
         caAttack = new myAction(.1f);
         caJump = new myAction(.1f);
@@ -58,10 +56,10 @@ public class Player : Character
                 y = 0,
                 z = 0,
             };
-            if (callbackContext.ReadValue<float>() < 0)
-                charSrite.flipX = true;
-            if(callbackContext.ReadValue<float>() > 0)
-                charSrite.flipX = false;
+            //if (callbackContext.ReadValue<float>() < 0)
+            //    charSrite.flipX = true;
+            //if(callbackContext.ReadValue<float>() > 0)
+            //    charSrite.flipX = false;
             movement.MyMove(dir);
         }
         else

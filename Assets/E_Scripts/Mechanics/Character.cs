@@ -64,6 +64,7 @@ public class Character : MonoBehaviour
         movement = GetComponent<Movement>();
         attack = GetComponent<Attack>();
         animController = gameObject.GetComponent<Animator>();
+        charSrite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
