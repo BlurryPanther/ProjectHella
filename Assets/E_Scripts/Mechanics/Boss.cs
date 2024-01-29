@@ -88,10 +88,9 @@ public class Boss : Character
     #endregion
 
     #region Unity methods
-    void Start()
+    protected override void Start()
     {
-        movement = GetComponent<Movement>();
-        attack = GetComponent<Attack>();
+        base.Start();
 
         caSlash = new myAction(slashRate, 4);
         caPush = new myAction(slashRate, 12);

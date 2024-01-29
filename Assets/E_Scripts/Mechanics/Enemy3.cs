@@ -14,12 +14,12 @@ public class Enemy3 : Character
     private void Awake()
     {
         target = FindObjectOfType<Player>();
-        attack = GetComponent<Attack>();
-        movement = GetComponent<Movement>();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         OnDead += DropMask;
         caPush = new myAction(rateAttack);
     }
@@ -78,5 +78,6 @@ public class Enemy3 : Character
 
         caPush.Restart();
         canAttack = true;
+        animController.SetBool("isMoving", false);
     }
 }

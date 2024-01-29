@@ -26,7 +26,7 @@ public partial class Movement : MonoBehaviour
     public void Start()
     {
         player = FindObjectOfType<Player>();
-        //rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         PartialStart();
     }
 

@@ -11,7 +11,7 @@ public class Character : MonoBehaviour
     protected Movement movement;
     protected Attack attack;
     private Rigidbody rb;
-    BoxCollider col;
+    protected BoxCollider col;
 
     protected Animator animController;
     protected SpriteRenderer charSrite;
@@ -59,9 +59,11 @@ public class Character : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        
+        movement = GetComponent<Movement>();
+        attack = GetComponent<Attack>();
+        animController = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame

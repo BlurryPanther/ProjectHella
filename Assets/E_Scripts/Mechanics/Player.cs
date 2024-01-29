@@ -20,12 +20,12 @@ public class Player : Character
     [SerializeField] double maxJumpHold = .5;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        animController = gameObject.GetComponent<Animator>();
+        base.Start();
+
         charSrite = gameObject.GetComponent<SpriteRenderer>();
-        movement = GetComponent<Movement>();
-        attack = GetComponent<Attack>();
+        
         caAttack = new myAction(.1f);
         caJump = new myAction(.1f);
     }
