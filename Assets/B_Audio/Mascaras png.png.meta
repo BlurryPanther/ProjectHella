@@ -1,0 +1,616 @@
+fileFormatVersion: 2
+guid: 76537263f3d9c0946bf9b3472a8a1e66
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Mascaras png_2
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 1429
+        width: 529
+        height: 684
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38ab57f1ee34cf742a5cedb008db7657
+      internalID: -631560661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_4
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 1440
+        width: 527
+        height: 672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5546e5da8cb59274d9a5d34bfecb31b6
+      internalID: 1925659799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_10
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 1445
+        width: 527
+        height: 666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f16c6e61afcdabe44873335ba5b4ee43
+      internalID: 1717388103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_14
+      rect:
+        serializedVersion: 2
+        x: 2754
+        y: 1445
+        width: 530
+        height: 660
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9d8e04fbb433b49b11874c9f952022
+      internalID: -313122877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_20
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 1440
+        width: 580
+        height: 671
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc33302c758ec0b4d92ad6ac2d8b9331
+      internalID: -1678656589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_27
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 684
+        width: 542
+        height: 678
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0135b19d7a49d8b48bd88cf60b947344
+      internalID: 2026481831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_38
+      rect:
+        serializedVersion: 2
+        x: 2751
+        y: 690
+        width: 545
+        height: 672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22609c50f1e402143905512dfd903f40
+      internalID: 2124199445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_43
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 689
+        width: 527
+        height: 672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6483f54ed4d2a049992d4a2b180df88
+      internalID: -39505956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_50
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 684
+        width: 521
+        height: 677
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7deb9c906d016194c9b4bc3345e56c1f
+      internalID: -1959864555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_51
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 683
+        width: 519
+        height: 682
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 398ee62e4852e2c4ca9ca270bae0a0d5
+      internalID: 583580820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_60
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 1217
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b493d14e79bd4144a04195f6234cb4e
+      internalID: -1928610687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_91
+      rect:
+        serializedVersion: 2
+        x: 1106
+        y: 12
+        width: 525
+        height: 663
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb2a8170345bed341b7490f6f76d95ca
+      internalID: -501981137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_94
+      rect:
+        serializedVersion: 2
+        x: 1659
+        y: 14
+        width: 522
+        height: 660
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff7938f3a61e09045b913fc543fbe126
+      internalID: 279554692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_95
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 13
+        width: 529
+        height: 660
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c766c8fb594df5c4987b51cd15d43cfb
+      internalID: 680677069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_0
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 11
+        width: 503
+        height: 668
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0b8eecb2fb8a444c9436501dd065878
+      internalID: -1117800356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mascaras png_1
+      rect:
+        serializedVersion: 2
+        x: 2755
+        y: 0
+        width: 523
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c572fdcd3a6b9346ae100f5b26f6538
+      internalID: -1117358883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 676b575340d75f54fa4ea85aafa22911
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Mascaras png_0: -1117800356
+      Mascaras png_1: -1117358883
+      Mascaras png_10: 1717388103
+      Mascaras png_100: -114940524
+      Mascaras png_101: -1447842726
+      Mascaras png_102: -1843357523
+      Mascaras png_103: 1029208097
+      Mascaras png_104: 2070585269
+      Mascaras png_105: 822918901
+      Mascaras png_106: 788154527
+      Mascaras png_107: -891932589
+      Mascaras png_108: 820710610
+      Mascaras png_109: 1594889375
+      Mascaras png_11: -1104307650
+      Mascaras png_110: 1415283497
+      Mascaras png_111: -653830328
+      Mascaras png_112: 169035315
+      Mascaras png_113: 1038330651
+      Mascaras png_114: 24408587
+      Mascaras png_115: 1399964914
+      Mascaras png_116: 2017286555
+      Mascaras png_117: 502029051
+      Mascaras png_118: -1946894582
+      Mascaras png_119: 621059494
+      Mascaras png_12: 1801999837
+      Mascaras png_120: 2128894520
+      Mascaras png_121: -1994118777
+      Mascaras png_122: -1891088731
+      Mascaras png_123: 962407341
+      Mascaras png_124: -262995715
+      Mascaras png_125: -1732524661
+      Mascaras png_126: -1886749959
+      Mascaras png_127: -1993629901
+      Mascaras png_128: 1210794300
+      Mascaras png_129: 1787813028
+      Mascaras png_13: 902242031
+      Mascaras png_130: -188271161
+      Mascaras png_131: 1047069198
+      Mascaras png_132: 2115383290
+      Mascaras png_133: -2048693325
+      Mascaras png_134: -1529760835
+      Mascaras png_135: -1975176397
+      Mascaras png_136: 626623174
+      Mascaras png_137: 1265970454
+      Mascaras png_138: -130119439
+      Mascaras png_139: 2005642029
+      Mascaras png_14: -313122877
+      Mascaras png_140: 91602507
+      Mascaras png_141: 323476476
+      Mascaras png_142: -498795814
+      Mascaras png_143: -242287507
+      Mascaras png_144: 1557403092
+      Mascaras png_145: -1397231107
+      Mascaras png_146: -716026630
+      Mascaras png_147: 976632695
+      Mascaras png_148: 2042647859
+      Mascaras png_149: 1095255394
+      Mascaras png_15: -1078980984
+      Mascaras png_150: 1782116281
+      Mascaras png_151: -647931566
+      Mascaras png_152: 649101615
+      Mascaras png_16: -1001226697
+      Mascaras png_17: -418997133
+      Mascaras png_18: -857190259
+      Mascaras png_19: 321265984
+      Mascaras png_2: -631560661
+      Mascaras png_20: -1678656589
+      Mascaras png_21: 599616656
+      Mascaras png_22: -164340989
+      Mascaras png_23: -2104880440
+      Mascaras png_24: 349589774
+      Mascaras png_25: -2016987000
+      Mascaras png_26: -130659918
+      Mascaras png_27: 2026481831
+      Mascaras png_28: 1255648867
+      Mascaras png_29: 411320029
+      Mascaras png_3: 1178381054
+      Mascaras png_30: -610069468
+      Mascaras png_31: 805646966
+      Mascaras png_32: 2092599203
+      Mascaras png_33: -651944114
+      Mascaras png_34: 1870259577
+      Mascaras png_35: -677905173
+      Mascaras png_36: 1589494006
+      Mascaras png_37: -1480209072
+      Mascaras png_38: 2124199445
+      Mascaras png_39: 1305261469
+      Mascaras png_4: 1925659799
+      Mascaras png_40: -1487182720
+      Mascaras png_41: 793177906
+      Mascaras png_42: 1867895797
+      Mascaras png_43: -39505956
+      Mascaras png_44: -316178365
+      Mascaras png_45: -562822600
+      Mascaras png_46: -1842311563
+      Mascaras png_47: 812058345
+      Mascaras png_48: -2082748256
+      Mascaras png_49: -209806800
+      Mascaras png_5: -1717266795
+      Mascaras png_50: -1959864555
+      Mascaras png_51: 583580820
+      Mascaras png_52: -385081429
+      Mascaras png_53: -161281318
+      Mascaras png_54: 92926789
+      Mascaras png_55: 20498228
+      Mascaras png_56: 1079572491
+      Mascaras png_57: -776730029
+      Mascaras png_58: -1630723780
+      Mascaras png_59: -1146071761
+      Mascaras png_6: 924905390
+      Mascaras png_60: -1928610687
+      Mascaras png_61: -1882045579
+      Mascaras png_62: 642101087
+      Mascaras png_63: 773619100
+      Mascaras png_64: 1388936993
+      Mascaras png_65: 416407085
+      Mascaras png_66: -979390671
+      Mascaras png_67: -1871104591
+      Mascaras png_68: 638471178
+      Mascaras png_69: -985803992
+      Mascaras png_7: -491661322
+      Mascaras png_70: 986147670
+      Mascaras png_71: 1453532735
+      Mascaras png_72: -681140466
+      Mascaras png_73: -1196161993
+      Mascaras png_74: 1795082641
+      Mascaras png_75: -416957570
+      Mascaras png_76: 1763360788
+      Mascaras png_77: 395629184
+      Mascaras png_78: 1314850953
+      Mascaras png_79: -2047913410
+      Mascaras png_8: 1203889745
+      Mascaras png_80: -437507398
+      Mascaras png_81: 367540637
+      Mascaras png_82: -706262548
+      Mascaras png_83: -502628729
+      Mascaras png_84: -1900770535
+      Mascaras png_85: 1074835651
+      Mascaras png_86: -1310673873
+      Mascaras png_87: -656461881
+      Mascaras png_88: 3656125
+      Mascaras png_89: 496508587
+      Mascaras png_9: 295724055
+      Mascaras png_90: -810974044
+      Mascaras png_91: -501981137
+      Mascaras png_92: -187909663
+      Mascaras png_93: -1242829326
+      Mascaras png_94: 279554692
+      Mascaras png_95: 680677069
+      Mascaras png_96: -414471209
+      Mascaras png_97: -35006040
+      Mascaras png_98: -1378783243
+      Mascaras png_99: 793689075
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
