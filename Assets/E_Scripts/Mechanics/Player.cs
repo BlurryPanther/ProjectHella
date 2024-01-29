@@ -80,10 +80,10 @@ public class Player : Character
 
         bool basicJump = jumpsCount <= 0;
 
-        if (callbackContext.canceled)
+        if (callbackContext.canceled && callbackContext.duration < maxJumpHold)
         {
             double timePercent = callbackContext.duration < jumpHold ? 0 : callbackContext.duration / maxJumpHold;
-
+            
             movement.Jump(basicJump, (float)timePercent);
             StartCoroutine(caJump.CoolDown());
 
