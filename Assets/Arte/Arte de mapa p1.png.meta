@@ -1,0 +1,920 @@
+fileFormatVersion: 2
+guid: 51db4a0cbcfd8544c936d19dcb40e8c1
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Arte de mapa p1_4
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 2276
+        width: 2108
+        height: 901
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a029eadcbc89d44488aa5af3fe786df
+      internalID: 1163813425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_6
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 1898
+        width: 338
+        height: 318
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1278f5ec37aca254d91534f8ff2970ee
+      internalID: 1443775456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_7
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 1759
+        width: 184
+        height: 457
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16b4b73b798ee6045adaf882e77cf204
+      internalID: -1184794667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_8
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 1976
+        width: 368
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 508260281555a4a45855a476dbf0a110
+      internalID: -455929364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_9
+      rect:
+        serializedVersion: 2
+        x: 2726
+        y: 1988
+        width: 308
+        height: 303
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 242acac58157014428e54b40481826d6
+      internalID: 658842236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_13
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 1376
+        width: 308
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51eb58a4300633746bc0c17a5a10c8c5
+      internalID: -961675127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_14
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1376
+        width: 308
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0f123f38654c1c49988703aaf9c9589
+      internalID: 1153376576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_15
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 1395
+        width: 237
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30f3d3586a94da949b2a67e1ec9328bd
+      internalID: -1073256342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_16
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 184
+        width: 559
+        height: 1732
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4169638f46fde4d4a8fc152ba837dd2d
+      internalID: -1782643992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_17
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 1496
+        width: 604
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8070383588f42743a3e574c16bd56be
+      internalID: 57651368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_18
+      rect:
+        serializedVersion: 2
+        x: 2576
+        y: 776
+        width: 559
+        height: 1140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c043bf6b4d33591409937cb405166f3d
+      internalID: -1661359480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_19
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 1016
+        width: 308
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7af271fe92a3ec944aaf1b951a6a3827
+      internalID: -777443049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_20
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1016
+        width: 308
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6504861eddb028479bfb087d8f6f339
+      internalID: -1300205841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_21
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 979
+        width: 188
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b143382be85a2ad4ebecbb5b90951612
+      internalID: 489102414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_22
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1076
+        width: 308
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e883f867bec818f4c8e52e4228c90b6f
+      internalID: 500145843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_23
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 656
+        width: 308
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f3ace3d0796fd24bb231ee9f233cbd4
+      internalID: -398751204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_24
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 656
+        width: 308
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fd3d612816a308419d77eb5650ead39
+      internalID: 1242508811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_25
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 195
+        width: 653
+        height: 589
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0947172b78bf49842a85b1b86562bce8
+      internalID: -2013907229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_26
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 296
+        width: 308
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df3bc6a69d534b4478285265b9ac3eaa
+      internalID: -1425365440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_27
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 248
+        width: 311
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79906551d793dc644b2fee25543b6e68
+      internalID: 169739431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_28
+      rect:
+        serializedVersion: 2
+        x: 2576
+        y: 169
+        width: 765
+        height: 416
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0f7984b3b6c18241a31157c3e721267
+      internalID: -1141961469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_33
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 165
+        width: 30
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c19f114f71683640958f9ddd75da1d8
+      internalID: -151729163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_34
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 169
+        width: 11
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b29090cdd1d22a438aeff7b3fe2d51c
+      internalID: -1139784377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_35
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 169
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31052bb6fbdae3b4e805bd3b6a55bf70
+      internalID: -1516045624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_36
+      rect:
+        serializedVersion: 2
+        x: 2708
+        y: 165
+        width: 56
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c197c839ed499a46a5cc86f34fba676
+      internalID: 994189652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_0
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 4275
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f61f06d15db19984aa33ac54da7e8fcf
+      internalID: -975518324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_1
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 4271
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fad93f80bb2127449b20a9646eca485
+      internalID: -404078058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_2
+      rect:
+        serializedVersion: 2
+        x: 1118
+        y: 4271
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a59b20b96819cf4c83a369ba38ab3b9
+      internalID: 1994212204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_3
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 4275
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2bdf8bb0d33e80439cff2fcb7c21f43
+      internalID: 1151408287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_5
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 3296
+        width: 1208
+        height: 968
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 296432569895ba94dbdf1595e24977ca
+      internalID: 1212239955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_10
+      rect:
+        serializedVersion: 2
+        x: 1635
+        y: 1924
+        width: 23
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60f6441e6e2769f4799f5fc65110aac2
+      internalID: -2073752318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_29
+      rect:
+        serializedVersion: 2
+        x: 3349
+        y: 491
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2ca4675e4ee00542bb1ddfbcc2e287b
+      internalID: 767694709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_30
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 345
+        width: 7
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a8337137c3eeec4fbcd0702404c3d03
+      internalID: -626879605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_31
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 240
+        width: 34
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4aa6c7b2bf292a40950d8023d6b03ea
+      internalID: 1944273439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_32
+      rect:
+        serializedVersion: 2
+        x: 3409
+        y: 334
+        width: 4
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 132d36f7bbf414741b1bd542b665ed1a
+      internalID: 407613016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arte de mapa p1_11
+      rect:
+        serializedVersion: 2
+        x: 1645
+        y: 3178
+        width: 577
+        height: 901
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57514d47179ffbe4da1157b498e56c38
+      internalID: -2071688218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: acdf45a1060979c40b14b047fe8affc2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Arte de mapa p1_0: -975518324
+      Arte de mapa p1_1: -404078058
+      Arte de mapa p1_10: -2073752318
+      Arte de mapa p1_11: -2071688218
+      Arte de mapa p1_12: -683094251
+      Arte de mapa p1_13: -961675127
+      Arte de mapa p1_14: 1153376576
+      Arte de mapa p1_15: -1073256342
+      Arte de mapa p1_16: -1782643992
+      Arte de mapa p1_17: 57651368
+      Arte de mapa p1_18: -1661359480
+      Arte de mapa p1_19: -777443049
+      Arte de mapa p1_2: 1994212204
+      Arte de mapa p1_20: -1300205841
+      Arte de mapa p1_21: 489102414
+      Arte de mapa p1_22: 500145843
+      Arte de mapa p1_23: -398751204
+      Arte de mapa p1_24: 1242508811
+      Arte de mapa p1_25: -2013907229
+      Arte de mapa p1_26: -1425365440
+      Arte de mapa p1_27: 169739431
+      Arte de mapa p1_28: -1141961469
+      Arte de mapa p1_29: 767694709
+      Arte de mapa p1_3: 1151408287
+      Arte de mapa p1_30: -626879605
+      Arte de mapa p1_31: 1944273439
+      Arte de mapa p1_32: 407613016
+      Arte de mapa p1_33: -151729163
+      Arte de mapa p1_34: -1139784377
+      Arte de mapa p1_35: -1516045624
+      Arte de mapa p1_36: 994189652
+      Arte de mapa p1_4: 1163813425
+      Arte de mapa p1_5: 1212239955
+      Arte de mapa p1_6: 1443775456
+      Arte de mapa p1_7: -1184794667
+      Arte de mapa p1_8: -455929364
+      Arte de mapa p1_9: 658842236
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
