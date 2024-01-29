@@ -52,7 +52,7 @@ public class bullet : MonoBehaviour
         if (other.tag == "Player")
         {
             other.GetComponent<Character>().Damage(1, transform.position);
-            buffManager.SetBuff(other.GetComponent<Character>(), 1);
+            //buffManager.SetBuff(other.GetComponent<Character>(), 1);
             ObjectPooling.Instance.TurnOffObject(this.gameObject);
         }
     }
