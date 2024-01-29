@@ -51,6 +51,8 @@ public class Boss : Character
     [SerializeField] myAction caBlow;
     [SerializeField] myAction caThorns;
 
+    Animator bossAnimCntr;
+
     enum Hability
     {
         None,
@@ -91,6 +93,7 @@ public class Boss : Character
     void Start()
     {
         movement = GetComponent<Movement>();
+        bossAnimCntr = GetComponent<Animator>();
         attack = GetComponent<Attack>();
 
         caSlash = new myAction(slashRate, 4);
@@ -190,7 +193,8 @@ public class Boss : Character
         {
             if (caThorns.CanMove)
             {
-                EnableThorns();
+                bossAnimCntr.SetBool("isSpaking", true);
+                Invoke("EnableThorns", 1.25f);
             }
             else if (caBlow.CanMove)
             {
@@ -257,6 +261,7 @@ public class Boss : Character
 
     private void Blow()
     {
+        bossAnimCntr.SetBool("isExploding", true);
         attack.Blow(explotionRadious, target);
 
         DrawExplotionGizmo();
@@ -270,6 +275,7 @@ public class Boss : Character
 
     private void Slash()
     {
+        bossAnimCntr.SetBool("isSlashing", true);
         attack.Slash();
         caSlash.Restart();
 
@@ -291,7 +297,14 @@ public class Boss : Character
         EnableAttack();
     }
 
-    private void EnableAttack() => canAttack = true;
+    private void EnableAttack()
+    {
+        bossAnimCntr.SetBool("isSlashing", false);
+        bossAnimCntr.SetBool("isSpaking", false);
+        bossAnimCntr.SetBool("isExploding", false);
+        bossAnimCntr.SetBool("isCharging", false);
+        canAttack = true;
+    }
 
     private void Push()
     {
