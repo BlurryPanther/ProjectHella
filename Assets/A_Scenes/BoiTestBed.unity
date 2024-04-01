@@ -858,6 +858,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2741089622943803874, guid: 6600f9d565848f9409addcf0c6fdbabe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063366774394591157, guid: 6600f9d565848f9409addcf0c6fdbabe,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 38.399998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063366774394591157, guid: 6600f9d565848f9409addcf0c6fdbabe,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 21.599998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063366774394591157, guid: 6600f9d565848f9409addcf0c6fdbabe,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5073392823223199761, guid: 6600f9d565848f9409addcf0c6fdbabe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1065,6 +1085,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8eb5da8dfbdce49bfe353ca94e19d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  immortalityTime: 1
+  knockBack: 0
+  knockBackDis: 0.5
+  maxHp: 8
+  hp: 5
+  dmg: 3
+  isGrounded: 0
+  jumpsCount: 0
 --- !u!1 &1878023533
 GameObject:
   m_ObjectHideFlags: 0
