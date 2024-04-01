@@ -65,6 +65,7 @@ public class Character : MonoBehaviour
         attack = GetComponent<Attack>();
         animController = gameObject.GetComponent<Animator>();
         charSrite = gameObject.GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -120,7 +121,6 @@ public class Character : MonoBehaviour
 
     private bool DetectGround()
     {
-        rb = GetComponent<Rigidbody>();
         Vector3 size = new(.5f, .5f, .5f);
         var dis = (col ??= GetComponent<BoxCollider>()).bounds.extents.y + .5f;
 
@@ -128,8 +128,11 @@ public class Character : MonoBehaviour
 
         foreach (var hit in hits)
         {
+            if (hit.point == default) continue;
+
             if (Vector3.Angle(hit.normal, Vector3.up) < 10)
             {
+                Debug.DrawRay(hit.point, hit.normal * 4, Color.yellow);
                 IsGrounded = true;
                 return true;
             }

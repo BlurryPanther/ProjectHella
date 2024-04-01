@@ -15,13 +15,14 @@ public class Boss : Character
     [SerializeField, Range(0, 1)] float secondPhace;
     [SerializeField] float slashRate = 1;
     [SerializeField] float slashRange = 3;
+    [SerializeField] float slashCD = 4;
     [SerializeField] float closeDis = 4;
     [SerializeField] float midDis = 6;
     [SerializeField] float explotionRadious = 2;
-    [SerializeField] float blowCD = 5;
-    [SerializeField] float pushCD = 4;
+    [SerializeField] float blowCD = 16;
+    [SerializeField] float pushCD = 12;
     [SerializeField] float thornsTime = 1f;
-    [SerializeField] float thornsCD = 8;
+    [SerializeField] float thornsCD = 20;
 
     [Space(10), Header("Status")]
     [SerializeField] int fase = 1;
@@ -50,8 +51,6 @@ public class Boss : Character
     [SerializeField] myAction caPush;
     [SerializeField] myAction caBlow;
     [SerializeField] myAction caThorns;
-
-    Animator bossAnimCntr;
 
     enum Hability
     {
@@ -94,10 +93,11 @@ public class Boss : Character
     {
         base.Start();
 
-        caSlash = new myAction(slashRate, 4);
-        caPush = new myAction(slashRate, 12);
-        caBlow = new myAction(slashRate, 16);
-        caThorns = new myAction(slashRate, 20);
+        caSlash = new myAction(slashCD);
+        caPush = new myAction(pushCD);
+        caBlow = new myAction(blowCD);
+        caThorns = new myAction(thornsCD);
+        target = FindObjectOfType<Player>();
 
         Invoke("FindPlayer", 2);
     }
@@ -191,8 +191,10 @@ public class Boss : Character
         {
             if (caThorns.CanMove)
             {
-                bossAnimCntr.SetBool("isSpaking", true);
-                Invoke("EnableThorns", 1.25f);
+                StartCoroutine(caThorns.CoolDown());
+                canAttack = false;
+                animController.SetBool("isSpaking", true);
+                Invoke("EnableThorns", 2.25f);
             }
             else if (caBlow.CanMove)
             {
@@ -212,6 +214,7 @@ public class Boss : Character
                 if (!canJump) return;
                 canAttack = false;
 
+                animController.SetBool("isWalking", true);
                 movement.MoveTo(myPlayer.transform.position, Slash);
                 //if (curDis == PlayerDis.Mid || curDis == PlayerDis.Far)
                 //{
@@ -228,7 +231,13 @@ public class Boss : Character
             switch (rand)
             {
                 case 0:
-                    EnableThorns();
+                    if (caThorns.canMove)
+                    {
+                        StartCoroutine(caThorns.CoolDown());
+                        animController.SetBool("isSpaking", true);
+                        EnableThorns();
+                    }
+
                     break;
 
                 case 1:
@@ -248,6 +257,7 @@ public class Boss : Character
                     if (!canJump) return;
                     canAttack = false;
 
+                    animController.SetBool("isWalking", true);
                     movement.MoveTo(myPlayer.transform.position, Slash);
                     break;
 
@@ -259,7 +269,6 @@ public class Boss : Character
 
     private void Blow()
     {
-        bossAnimCntr.SetBool("isExploding", true);
         attack.Blow(explotionRadious, target);
 
         DrawExplotionGizmo();
@@ -273,7 +282,8 @@ public class Boss : Character
 
     private void Slash()
     {
-        bossAnimCntr.SetBool("isSlashing", true);
+        animController.SetBool("isWalking", false);
+        animController.SetBool("isSlashing", true);
         attack.Slash();
         caSlash.Restart();
 
@@ -297,10 +307,10 @@ public class Boss : Character
 
     private void EnableAttack()
     {
-        bossAnimCntr.SetBool("isSlashing", false);
-        bossAnimCntr.SetBool("isSpaking", false);
-        bossAnimCntr.SetBool("isExploding", false);
-        bossAnimCntr.SetBool("isCharging", false);
+        animController.SetBool("isSlashing", false);
+        animController.SetBool("isSpaking", false);
+        animController.SetBool("isExploding", false);
+        animController.SetBool("isCharging", false);
         canAttack = true;
     }
 
@@ -314,7 +324,7 @@ public class Boss : Character
         Vector3 dir1 = edgePos - transform.position;
 
         attack.EnableDagameOnHit();
-        animController.SetBool("isMoving", true);
+        animController.SetBool("isWalking", true);
 
         movement.MoveTo(edgePos, () =>
             movement.MoveTo(oppositeEdge, StopPush, 2.6f));
@@ -342,7 +352,7 @@ public class Boss : Character
 
         caPush.Restart();
         canAttack = true;
-        animController.SetBool("isMoving", false);
+        animController.SetBool("isWalking", false);
     }
 
     private void Move()
@@ -358,7 +368,7 @@ public class Boss : Character
         var dis = Vector3.Distance(myPlayer.transform.position, transform.position);
 
         if (dis <= 0)
-            curDis = PlayerDis.None;
+            curDis = PlayerDis.Close;
         else if (dis > 0 && dis <= closeDis)
             curDis = PlayerDis.Close;
         else if (dis < midDis)
@@ -376,7 +386,7 @@ public class Boss : Character
             playerPosition = PlayerPos.Up;
             print("Up");
         }
-        else if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), movement.CurDirection * -1, Quaternion.identity, 1, 1 << 9))
+        else if (Physics.BoxCast(transform.position, new Vector3(.5f, .5f, .5f), movement.CurDirection * -1, Quaternion.identity, closeDis, 1 << 9))
         {
             playerPosition = PlayerPos.Back;
             print("Back");
@@ -417,7 +427,7 @@ public class myAction
     {
         get
         {
-            if (canMove && curTime >= tgrTime)
+            if (canMove && curTime >= cdTime)
                 return true;
 
             return false;
@@ -429,7 +439,7 @@ public class myAction
         get => curTime;
         set
         {
-            curTime = value >= tgrTime ? tgrTime : value;
+            curTime = value >= cdTime ? cdTime.Value : value;
         }
     }
 
@@ -447,6 +457,7 @@ public class myAction
     {
         this.cdTime = cdTime;
         canMove= true;
+        curTime = 0;
     }
 
     //public IEnumerator StartLoop()
