@@ -47,7 +47,9 @@ public class Player : Character
     #region Inputs
     public void Move(InputAction.CallbackContext callbackContext)
     {
-        animController.SetBool("isRunning", true);
+        if (IsGrounded)
+            animController.SetBool("isRunning", true);
+
         if(callbackContext.performed)
         {
             var dir = new Vector3()
