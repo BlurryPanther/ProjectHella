@@ -3802,7 +3802,7 @@ Transform:
   m_GameObject: {fileID: 1305863498}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.09, y: 1.44, z: -10}
+  m_LocalPosition: {x: 3.5300467, y: 21, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5277,7 +5277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1896956120
 Transform:
   m_ObjectHideFlags: 0
@@ -5536,7 +5536,7 @@ Transform:
   m_GameObject: {fileID: 3202122065515340113}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00000023841858, y: 0, z: -10}
+  m_LocalPosition: {x: 0.00000170299, y: 0, z: -71.42857}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5565,7 +5565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &800475809848346486
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5696,7 +5696,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 9.070539, y: 12.292218, z: 1}
-  m_Center: {x: 0.2949133, y: -0.9453907, z: 0}
+  m_Center: {x: 0.2949133, y: -3.7, z: 0}
 --- !u!1001 &3078820717711332612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5778,7 +5778,7 @@ PrefabInstance:
     - target: {fileID: 4927954008235128720, guid: bcc0d33020487dc478f8d1eeabc4980d,
         type: 3}
       propertyPath: knockBackDis
-      value: 90
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8335716792944292503, guid: bcc0d33020487dc478f8d1eeabc4980d,
         type: 3}
@@ -6382,8 +6382,8 @@ Transform:
   m_GameObject: {fileID: 709481816107832710}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5300465, y: 23.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.5300465, y: 21, z: 0}
+  m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1560094716276465692}
@@ -6432,6 +6432,8 @@ MonoBehaviour:
   inknockback: 0
   isGrounded: 0
   jumpsCount: 0
+  attackTime: 2
+  attackAnimation: 0.26
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
