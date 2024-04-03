@@ -88,6 +88,24 @@ public class Boss : Character
     }
     #endregion
 
+    public bool CanAttack
+    {
+        get
+        {
+            if (hp <= 0)
+                return false;
+
+            return canAttack;
+        }
+
+        set
+        {
+            if (hp <= 0) return;
+
+            canAttack = value;
+        }
+    }
+
     #region Unity methods
     protected override void Start()
     {
@@ -185,14 +203,14 @@ public class Boss : Character
 
     private void Attack()
     {
-        if (!canAttack) return;
+        if (!CanAttack) return;
 
         if (fase == 1)
         {
             if (caThorns.CanMove)
             {
                 StartCoroutine(caThorns.CoolDown());
-                canAttack = false;
+                CanAttack = false;
                 animController.SetBool("isSpaking", true);
                 Invoke("EnableThorns", 2.25f);
             }
@@ -200,7 +218,7 @@ public class Boss : Character
             {
                 if (!canJump) return;
 
-                canAttack = false;
+                CanAttack = false;
                 caBlow.Restart();
 
                 movement.MoveTo(myPlayer.transform.position, () => Invoke("Blow", .5f));
@@ -212,7 +230,7 @@ public class Boss : Character
             else if (caSlash.CanMove)
             {
                 if (!canJump) return;
-                canAttack = false;
+                CanAttack = false;
 
                 animController.SetBool("isWalking", true);
                 movement.MoveTo(myPlayer.transform.position, Slash);
@@ -242,7 +260,7 @@ public class Boss : Character
 
                 case 1:
                     if (!canJump) return;
-                    canAttack = false;
+                    CanAttack = false;
                     caBlow.Restart();
 
                     movement.MoveTo(myPlayer.transform.position, () => Invoke("Blow", .5f));
@@ -255,10 +273,11 @@ public class Boss : Character
 
                 case 3:
                     if (!canJump) return;
-                    canAttack = false;
+                    CanAttack = false;
 
                     animController.SetBool("isWalking", true);
                     movement.MoveTo(myPlayer.transform.position, Slash);
+                    print(myPlayer.name);
                     break;
 
                 default:
@@ -292,7 +311,7 @@ public class Boss : Character
 
     private void EnableThorns()
     {
-        canAttack = false;
+        CanAttack = false;
         picos.SetActive(true);
 
         Invoke("DisableThorns", thornsTime);
@@ -311,12 +330,12 @@ public class Boss : Character
         animController.SetBool("isSpaking", false);
         animController.SetBool("isExploding", false);
         animController.SetBool("isCharging", false);
-        canAttack = true;
+        CanAttack = true;
     }
 
     private void Push()
     {
-        canAttack = false;
+        CanAttack = false;
         caPush.canMove = false;
 
         Vector3 oppositeEdge = default;
@@ -351,7 +370,7 @@ public class Boss : Character
         caPush.canMove = true;
 
         caPush.Restart();
-        canAttack = true;
+        CanAttack = true;
         animController.SetBool("isWalking", false);
     }
 

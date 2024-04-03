@@ -58,7 +58,7 @@ public partial class Movement : MonoBehaviour
         {
             canMove = false;
 
-            if (Vector3.Distance(transform.position, destiny.Value) > minDistance)
+            if (MathF.Abs((destiny.Value - transform.position).x) > minDistance)
             {
                 (rb ??= GetComponent<Rigidbody>()).velocity = new Vector3(curDir.x * speed * speedBoost, rb.velocity.y, 0);
             }

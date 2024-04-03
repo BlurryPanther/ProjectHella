@@ -15,6 +15,7 @@ public partial class Attack : MonoBehaviour
     [SerializeField] int hitDmg;
     [SerializeField] int thornsDmg = 2;
     Animator animController;
+    [SerializeField] string enemyTag;
 
     private void FixedUpdate()
     {
@@ -81,9 +82,8 @@ public partial class Attack : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<Character>() is var c && c)
             {
-                if (!hit.collider.TryGetComponent<Player>(out _))
+                if (hit.collider.CompareTag(enemyTag))
                 {
-
                     return c;
                 }
             }

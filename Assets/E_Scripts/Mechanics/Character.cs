@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
     //Damage
     public int dmg = 3;
 
+    public bool inknockback;
     myAction caImmortality;
     [SerializeField] protected bool isGrounded = false;
     protected bool canJump = true;
@@ -78,33 +79,36 @@ public class Character : MonoBehaviour
     {
         if (hp <= 0 || !caImmortality.canMove) return;
 
-        animController.SetBool("gotHit", true);
+        //animController.SetBool("gotHit", true);
+        Invoke("StartAnimC", 1.5f);
         hp -= value;
 
 
-        Invoke("EndAnimC", .5f);
+        Invoke("EndAnimC", 2f);
         StartCoroutine(caImmortality.CoolDown());
-        //if (pos != null)
-        //    KnockBack(pos.Value);
-        //null coalesing opperator
+        if (pos != null)
+            KnockBack(pos.Value);
     }
 
     private void KnockBack(Vector3 enemyPos)
     {
         if (!knockBack || !canJump) return;
 
-        var dir1 = (transform.position - enemyPos).normalized * knockBackDis;
+        inknockback = true;
+        var dir1 = (transform.position - enemyPos);
         var dir = new Vector3(dir1.x, 0, 0);
         dir += transform.position;
 
-        movement.MoveTo(dir, FinishKnockBack);
+        rb.AddForce(dir.normalized * knockBackDis, ForceMode.Impulse);
+        Invoke("FinishKnockBack", 1);
+        //movement.MoveTo(dir, FinishKnockBack);
     }
 
     private void EnableJump() => canJump = true;
 
     public void FinishKnockBack()
     {
-
+        inknockback = false;
     }
 
     public virtual void Revive()
@@ -140,6 +144,11 @@ public class Character : MonoBehaviour
 
         IsGrounded = false;
         return false;
+    }
+
+    void StartAnimC()
+    {
+        animController.SetBool("gotHit", true);
     }
 
     void EndAnimC()

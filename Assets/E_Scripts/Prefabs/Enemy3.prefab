@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 3601263291584390849}
   m_Layer: 9
   m_Name: Enemy3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,6 +141,7 @@ MonoBehaviour:
   maxHp: 10
   hp: 27
   dmg: 3
+  inknockback: 0
   isGrounded: 0
   jumpsCount: 0
   edgeL: {fileID: 319624072261676179}
@@ -201,6 +202,7 @@ MonoBehaviour:
   minDistance: 1.5
   curDirection: {x: 1, y: 0, z: 0}
   speedBoost: 10
+  startDir: -1
   cameraTarget: {fileID: 0}
   xOffset: 0
   minFirstJumpHeight: 4
@@ -226,6 +228,7 @@ MonoBehaviour:
   blowDmg: 1
   hitDmg: 1
   thornsDmg: 1
+  enemyTag: Player
 --- !u!212 &5269746671689529245
 SpriteRenderer:
   m_ObjectHideFlags: 0

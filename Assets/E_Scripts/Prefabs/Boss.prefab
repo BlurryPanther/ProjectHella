@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 5399176124646487206}
   m_Layer: 9
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -322,6 +322,7 @@ MonoBehaviour:
   maxHp: 10
   hp: 60
   dmg: 3
+  inknockback: 0
   isGrounded: 0
   jumpsCount: 0
   edgeL: {fileID: 2169105483830764945}
@@ -330,6 +331,7 @@ MonoBehaviour:
   secondPhace: 0.2
   slashRate: 1
   slashRange: 3
+  slashCD: 4
   closeDis: 3
   midDis: 6
   explotionRadious: 2
@@ -384,6 +386,7 @@ MonoBehaviour:
   blowDmg: 2
   hitDmg: 1
   thornsDmg: 2
+  enemyTag: Player
 --- !u!114 &7791642516340111759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +406,7 @@ MonoBehaviour:
   minDistance: 1.8
   curDirection: {x: 1, y: 0, z: 0}
   speedBoost: 10
+  startDir: -1
   cameraTarget: {fileID: 0}
   xOffset: 0
   minFirstJumpHeight: 4

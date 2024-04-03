@@ -5561,7 +5561,7 @@ GameObject:
   - component: {fileID: 8893794100938187127}
   m_Layer: 9
   m_Name: Enemy1
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5775,6 +5775,11 @@ PrefabInstance:
       propertyPath: startDir
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4927954008235128720, guid: bcc0d33020487dc478f8d1eeabc4980d,
+        type: 3}
+      propertyPath: knockBackDis
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 8335716792944292503, guid: bcc0d33020487dc478f8d1eeabc4980d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5905,6 +5910,7 @@ MonoBehaviour:
   blowDmg: 0
   hitDmg: 0
   thornsDmg: 0
+  enemyTag: Player
 --- !u!1001 &3480213632777305801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6423,6 +6429,7 @@ MonoBehaviour:
   maxHp: 8
   hp: 5
   dmg: 3
+  inknockback: 0
   isGrounded: 0
   jumpsCount: 0
 --- !u!1660057539 &9223372036854775807

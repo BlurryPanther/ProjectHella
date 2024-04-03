@@ -38,7 +38,7 @@ public class Enemy1 : Character
     private bool DetectGround()
     {
         float dis = col.bounds.extents.y + col.bounds.extents.y * .4f;
-        Vector3 start = transform.position + dir * col.bounds.extents.x;
+        Vector3 start = transform.position + Vector3.up * col.center.y * -col.size.y + dir * col.bounds.extents.x;
 
         var hits = Physics.RaycastAll(start, Vector3.down, dis);
         Debug.DrawRay(start, Vector3.down * dis, Color.red);

@@ -23,7 +23,7 @@ public class Player : Character
     protected override void Start()
     {
         base.Start();
-        
+
         caAttack = new myAction(.1f);
         caJump = new myAction(.1f);
     }
@@ -47,6 +47,8 @@ public class Player : Character
     #region Inputs
     public void Move(InputAction.CallbackContext callbackContext)
     {
+        if (hp <= 0) return;
+
         if (IsGrounded)
             animController.SetBool("isRunning", true);
 
@@ -73,7 +75,7 @@ public class Player : Character
 
     public void Jump(InputAction.CallbackContext callbackContext)
     {
-        if (!caJump.canMove) return;
+        if (!caJump.canMove || hp <= 0) return;
         if ((isGrounded && jumpsCount > 0) || (!IsGrounded && jumpsCount > 1) || !canJump) return;
 
         if (jumpsCount > 0 && !jumpMask) return;
@@ -127,7 +129,7 @@ public class Player : Character
 
     public void HeavyAttack(InputAction.CallbackContext callbackContext)
     {
-        if (!caAttack.canMove) return;
+        if (hp <= 0 || !caAttack.canMove) return;
 
         if (callbackContext.canceled && callbackContext.duration < slashHold)
         {

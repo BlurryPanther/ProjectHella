@@ -41,7 +41,7 @@ public class Enemy2 : Character
         };
         bullet.GetComponent<bullet>().GetDir();
         //attack.Shoot(new Vector3(transform.position.x + 1, transform.position.y, 0));
-        //canAttack = false;
+        //CanAttack = false;
     }
 
     private void OnTriggerEnter(Collider other)
